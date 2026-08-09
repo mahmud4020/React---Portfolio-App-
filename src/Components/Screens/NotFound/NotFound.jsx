@@ -8,8 +8,8 @@ const NotFound = () => {
         <section id="not-found" style={{ textAlign: 'center', padding: '6rem 0' }}>
             <SEO
                 title="Page Not Found"
-                description="The page you are looking for does not exist. Return to the homepage of Sk Sahed Ahmed's portfolio."
-                url="https://sahedahmed.netlify.app/404"
+                description="The page you are looking for does not exist. Return to the homepage of Enostation."
+                url="https://enostation.netlify.app/404"
             />
 
             <FiAlertTriangle size={64} style={{ color: 'var(--color-primary)' }} />

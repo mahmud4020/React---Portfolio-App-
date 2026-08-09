@@ -1,27 +1,34 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect, useState } from 'react';
-import { AiOutlineMail } from 'react-icons/ai';
+import { AiOutlineMail, AiOutlineSend } from 'react-icons/ai';
 import { BsWhatsapp } from 'react-icons/bs';
 import { RiMessengerLine } from 'react-icons/ri';
-import { useTranslation } from 'react-i18next';
+import { FiDollarSign } from 'react-icons/fi';
 import './contact.css';
 import Modal from '../common/Modal';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PHONE_PATTERN = /^\+?[0-9\s-]{7,15}$/;
+
+const BUDGET_OPTIONS = [
+    '< $2,500',
+    '$2,500 - $5,000',
+    '$5,000 - $15,000',
+    '$15,000+'
+];
 
 const Contact = () => {
-    const { t } = useTranslation();
     const [modalOpen, setModalOpen] = useState(false);
     const [modalType, setModalType] = useState('success');
     const [sending, setSending] = useState(false);
+
+    const [selectedBudget, setSelectedBudget] = useState('$2,500 - $5,000');
     const [errors, setErrors] = useState({});
     const [formValues, setFormValues] = useState({
         name: '',
         email: '',
         phone: '',
-        projectType: '',
+        projectType: 'Web & SaaS Application',
         message: '',
     });
 
@@ -48,18 +55,14 @@ const Contact = () => {
     const validate = () => {
         const newErrors = {};
 
-        if (!formValues.name.trim()) newErrors.name = t('contact_form.errors.name');
+        if (!formValues.name.trim()) newErrors.name = 'Full name is required';
         if (!formValues.email.trim()) {
-            newErrors.email = t('contact_form.errors.email');
+            newErrors.email = 'Valid email is required';
         } else if (!EMAIL_PATTERN.test(formValues.email)) {
-            newErrors.email = t('contact_form.errors.email');
-        }
-        if (!formValues.projectType) newErrors.projectType = t('contact_form.errors.project_type');
-        if (formValues.phone && !PHONE_PATTERN.test(formValues.phone)) {
-            newErrors.phone = t('contact_form.errors.phone');
+            newErrors.email = 'Valid email is required';
         }
         if (formValues.message.trim().length < 10) {
-            newErrors.message = t('contact_form.errors.message');
+            newErrors.message = 'Please provide details (minimum 10 characters)';
         }
 
         setErrors(newErrors);
@@ -72,6 +75,7 @@ const Contact = () => {
         if (!validate()) return;
 
         const formData = new FormData(e.target);
+        formData.append('budget', selectedBudget);
         setSending(true);
 
         try {
@@ -90,7 +94,7 @@ const Contact = () => {
                     name: '',
                     email: '',
                     phone: '',
-                    projectType: '',
+                    projectType: 'Web & SaaS Application',
                     message: '',
                 });
             } else {
@@ -106,112 +110,125 @@ const Contact = () => {
         }
     };
 
-    const projectTypes = [
-        'website',
-        'ecommerce',
-        'webapp',
-        'mobileapp',
-        'wordpress',
-        'other',
-    ];
-
     return (
         <section id="contact">
-            <h5 data-aos="fade-up">{t('contact_section.subtitle')}</h5>
-            <h2 data-aos="fade-up" data-aos-delay="100">{t('contact_section.title')}</h2>
+            <h5 data-aos="fade-up">Let's Build Something Great</h5>
+            <h2 data-aos="fade-up" data-aos-delay="100">Start Your Agency Project</h2>
 
             <div className="container contact__container">
-                {/* contact options */}
-                <div data-aos="slide-right" className="contact__options">
-                    <article className="contact__option">
+                {/* Agency Direct Channels */}
+                <div data-aos="fade-right" className="contact__options">
+                    <div className="contact-card-info glass-card">
+                        <h3>Direct Agency Channels</h3>
+                        <p>Prefer instant communication? Connect directly with our lead engineering team.</p>
+                    </div>
+
+                    <article className="contact__option glass-card">
                         <AiOutlineMail className="contact__option__icon" />
-                        <h4>{t('contact.email')}</h4>
+                        <h4>Email Us</h4>
                         <h5>ssahed65@gmail.com</h5>
-                        <a href="mailto: ssahed65@gmail.com">{t('contact_section.send_message')}</a>
+                        <a href="mailto:ssahed65@gmail.com">Send Direct Email</a>
                     </article>
 
-                    <article className="contact__option">
-                        <RiMessengerLine className="contact__option__icon" />
-                        <h4>Messanger</h4>
-                        <h5>Sk Sahed Ahmed</h5>
-                        <a href="https://www.m.me/sahedstar" rel="noreferrer" target="_blank">
-                            {t('contact_section.send_message')}
-                        </a>
-                    </article>
-
-                    <article className="contact__option">
+                    <article className="contact__option glass-card">
                         <BsWhatsapp className="contact__option__icon" />
-                        <h4>WhatsApp</h4>
-                        <h5>+8801616516753</h5>
+                        <h4>WhatsApp Inquiry</h4>
+                        <h5>+880 1616-516753</h5>
                         <a
                             href="https://api.whatsapp.com/send?phone=8801616516753"
                             rel="noreferrer"
                             target="_blank"
                         >
-                            {t('contact_section.send_message')}
+                            Chat on WhatsApp
+                        </a>
+                    </article>
+
+                    <article className="contact__option glass-card">
+                        <RiMessengerLine className="contact__option__icon" />
+                        <h4>Facebook Messenger</h4>
+                        <h5>Enostation Agency</h5>
+                        <a href="https://www.m.me/sahedstar" rel="noreferrer" target="_blank">
+                            Open Messenger
                         </a>
                     </article>
                 </div>
 
-                {/* form section */}
-                <form data-aos="slide-left" onSubmit={handleSubmit} noValidate>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder={t('contact_form.name')}
-                        value={formValues.name}
-                        onChange={handleChange}
-                        className={errors.name ? 'form-error' : ''}
-                        required
-                    />
-                    {errors.name && <small className="form-error-msg">{errors.name}</small>}
+                {/* Interactive Project Inquiry Form */}
+                <form data-aos="fade-left" className="agency-inquiry-form glass-card" onSubmit={handleSubmit} noValidate>
+                    <h3>Project Details & Budget</h3>
+                    <p className="form-subtitle">Fill out the brief below and receive a project estimate within 24 hours.</p>
 
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder={t('contact_form.email')}
-                        value={formValues.email}
-                        onChange={handleChange}
-                        className={errors.email ? 'form-error' : ''}
-                        required
-                    />
-                    {errors.email && <small className="form-error-msg">{errors.email}</small>}
+                    {/* Budget Selection Pills */}
+                    <div className="budget-selection-wrapper">
+                        <label className="input-label"><FiDollarSign /> Estimated Project Budget</label>
+                        <div className="budget-pills-grid">
+                            {BUDGET_OPTIONS.map((b) => (
+                                <button
+                                    key={b}
+                                    type="button"
+                                    className={`budget-pill ${selectedBudget === b ? 'active' : ''}`}
+                                    onClick={() => setSelectedBudget(b)}
+                                >
+                                    {b}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
 
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder={t('contact_form.phone')}
-                        value={formValues.phone}
-                        onChange={handleChange}
-                        className={errors.phone ? 'form-error' : ''}
-                    />
-                    {errors.phone && <small className="form-error-msg">{errors.phone}</small>}
+                    <div className="form-grid-row">
+                        <div>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Your Name or Company *"
+                                value={formValues.name}
+                                onChange={handleChange}
+                                className={errors.name ? 'form-error' : ''}
+                                required
+                            />
+                            {errors.name && <small className="form-error-msg">{errors.name}</small>}
+                        </div>
 
-                    <select
-                        name="projectType"
-                        value={formValues.projectType}
-                        onChange={handleChange}
-                        className={errors.projectType ? 'form-error' : ''}
-                        required
-                    >
-                        <option value="" disabled>
-                            {t('contact_form.project_type')}
-                        </option>
-                        {projectTypes.map((key) => (
-                            <option key={key} value={t(`contact_form.project_types.${key}`)}>
-                                {t(`contact_form.project_types.${key}`)}
-                            </option>
-                        ))}
-                    </select>
-                    {errors.projectType && (
-                        <small className="form-error-msg">{errors.projectType}</small>
-                    )}
+                        <div>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Work Email *"
+                                value={formValues.email}
+                                onChange={handleChange}
+                                className={errors.email ? 'form-error' : ''}
+                                required
+                            />
+                            {errors.email && <small className="form-error-msg">{errors.email}</small>}
+                        </div>
+                    </div>
+
+                    <div className="form-grid-row">
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Phone / WhatsApp Number (Optional)"
+                            value={formValues.phone}
+                            onChange={handleChange}
+                        />
+
+                        <select
+                            name="projectType"
+                            value={formValues.projectType}
+                            onChange={handleChange}
+                        >
+                            <option value="Web & SaaS Application">Web & SaaS Application</option>
+                            <option value="AI Automation & Custom LLMs">AI Automation & Custom LLMs</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="UI/UX & Product Design">UI/UX & Product Design</option>
+                            <option value="Cloud DevOps & Maintenance">Cloud DevOps & Maintenance</option>
+                        </select>
+                    </div>
 
                     <textarea
                         name="message"
-                        rows="10"
-                        cols="10"
-                        placeholder={t('contact_form.message')}
+                        rows="6"
+                        placeholder="Tell us about your project goals, timelines, or requirements... *"
                         value={formValues.message}
                         onChange={handleChange}
                         className={errors.message ? 'form-error' : ''}
@@ -219,8 +236,8 @@ const Contact = () => {
                     ></textarea>
                     {errors.message && <small className="form-error-msg">{errors.message}</small>}
 
-                    <button type="submit" className="btn btn-primary" disabled={sending}>
-                        {sending ? t('contact_form.sending') : t('contact_form.send')}
+                    <button type="submit" className="btn btn-primary submit-inquiry-btn" disabled={sending}>
+                        {sending ? 'Sending Inquiry...' : 'Submit Project Request'} <AiOutlineSend />
                     </button>
                 </form>
             </div>
@@ -230,10 +247,10 @@ const Contact = () => {
                 type={modalType}
                 message={
                     modalType === 'success'
-                        ? t('contact_form.success')
-                        : t('contact_form.error')
+                        ? 'Thank you! Your agency project inquiry has been received. We will contact you within 24 hours.'
+                        : 'Something went wrong while sending your request. Please try contacting us via WhatsApp or Email.'
                 }
-                closeLabel={t('contact_form.modal_close')}
+                closeLabel="Close"
                 onClose={() => setModalOpen(false)}
             />
         </section>
@@ -241,3 +258,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

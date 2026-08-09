@@ -13,20 +13,20 @@ const BrochureDownload = ({ label = 'Download Service Brochure' }) => {
                 const pageWidth = doc.internal.pageSize.getWidth();
 
                 // ===== Header =====
-                doc.setFillColor(0, 122, 204);
+                doc.setFillColor(126, 200, 52);
                 doc.rect(0, 0, pageWidth, 30, 'F');
                 doc.setTextColor(255, 255, 255);
                 doc.setFont('helvetica', 'bold');
                 doc.setFontSize(20);
-                doc.text('Sk Sahed Ahmed', pageWidth / 2, 15, { align: 'center' });
+                doc.text('Enostation', pageWidth / 2, 15, { align: 'center' });
                 doc.setFontSize(12);
                 doc.setFont('helvetica', 'normal');
-                doc.text('Fullstack Software Developer', pageWidth / 2, 24, { align: 'center' });
+                doc.text('Web Development Agency', pageWidth / 2, 24, { align: 'center' });
 
                 let y = 45;
 
                 const addSection = (title, lines) => {
-                    doc.setTextColor(0, 122, 204);
+                    doc.setTextColor(126, 200, 52);
                     doc.setFont('helvetica', 'bold');
                     doc.setFontSize(14);
                     doc.text(title, 15, y);
@@ -54,11 +54,11 @@ const BrochureDownload = ({ label = 'Download Service Brochure' }) => {
                     'Facebook: facebook.com/sahedstar',
                     'LinkedIn: linkedin.com/in/sahedstar',
                     'GitHub: github.com/sahedalways',
-                    'Portfolio: sahedahmed.netlify.app',
+                    'Portfolio: enostation.netlify.app',
                 ]);
 
                 // ===== Services =====
-                addSection('Services I Provide', [
+                addSection('Services We Provide', [
                     'Frontend Development - React, Next.js, React Native',
                     'Backend Development - PHP, Laravel, Node.js',
                     'Database Design & Management - MySQL, MongoDB, Supabase',
@@ -78,7 +78,7 @@ const BrochureDownload = ({ label = 'Download Service Brochure' }) => {
                 ]);
 
                 // ===== Process =====
-                addSection('How I Work', [
+                addSection('How We Work', [
                     '1. Discovery & Requirement Analysis',
                     '2. UI/UX Design & Planning',
                     '3. Development (Milestone based)',
@@ -93,7 +93,7 @@ const BrochureDownload = ({ label = 'Download Service Brochure' }) => {
                     '30% final payment after delivery',
                 ]);
 
-                doc.save('Sahed-Service-Brochure.pdf');
+                doc.save('Enostation-Service-Brochure.pdf');
             } catch (err) {
                 console.error('Brochure generation error:', err);
             } finally {

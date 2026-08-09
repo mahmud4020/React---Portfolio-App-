@@ -35,7 +35,7 @@ const BlogDetails = () => {
                 <>
                     {loading ? (
                         <HashLoader
-                            color="#007ACC"
+                            color="#7EC834"
                             loading={loading}
                             className="override"
                             size={100}
@@ -44,9 +44,9 @@ const BlogDetails = () => {
                         <>
                             <SEO
                                 title={item.title}
-                                description={typeof item.desc === 'string' ? item.desc.replace(/<[^>]*>/g, '').slice(0, 160) : `Blog by Sk Sahed Ahmed`}
+                                description={typeof item.desc === 'string' ? item.desc.replace(/<[^>]*>/g, '').slice(0, 160) : `Blog by Enostation`}
                                 image={item.image}
-                                url={`https://sahedahmed.netlify.app/blog-details/${id}`}
+                                url={`https://enostation.netlify.app/blog-details/${id}`}
                                 type="article"
                             />
 

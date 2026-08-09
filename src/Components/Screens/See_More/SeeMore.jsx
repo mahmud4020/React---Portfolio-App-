@@ -21,7 +21,7 @@ const SeeMore = () => {
     if (isLoading) {
         return (
             <div style={{ display: 'flex', justifyContent: 'center', padding: '100px' }}>
-                <HashLoader color="#007ACC" loading={isLoading} size={100} />
+                <HashLoader color="#7EC834" loading={isLoading} size={100} />
             </div>
         );
     }
@@ -31,8 +31,8 @@ const SeeMore = () => {
             <section id="portfolio">
                 <SEO
                     title="All Projects"
-                    description="Browse all projects by Sk Sahed Ahmed: web applications, mobile apps, React apps, MERN apps, PHP apps and more."
-                    url="https://sahedahmed.netlify.app/projects"
+                    description="Browse all projects by Enostation: web applications, mobile apps, React apps, MERN apps, PHP apps and more."
+                    url="https://enostation.netlify.app/projects"
                 />
                 <h5>{t('portfolio.subtitle')}</h5>
                 <h2>{t('portfolio.title')}</h2>

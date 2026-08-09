@@ -1,123 +1,307 @@
+/* ===== Agency Contact & Project Inquiry Styling ===== */
 .container.contact__container {
-  width: 74%;
+  width: var(--container-width-lg);
   display: grid;
-  grid-template-columns: 30% 58%;
-  gap: 12%;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
 }
 
 .contact__options {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 
-.contact__option {
-  background: var(--color-bg-variant);
-  padding: 1.2rem;
-  border-radius: 1.2rem;
-  text-align: center;
-  border: 1px solid transparent;
-  transition: var(--transition);
+.contact-card-info {
+  padding: 1.8rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.contact__option:hover {
-  background: transparent;
-  border-color: var(--color-primary-variant);
+.contact-card-info::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(126, 200, 52, 0.08), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.contact__option__icon {
-  font-size: 1.5rem;
+.contact-card-info h3 {
+  font-size: 1.3rem;
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
-.contact__option a {
-  margin-top: 0.7rem;
-  display: inline-block;
-  font-size: 1rem;
+.contact-card-info p {
+  font-size: 0.9rem;
+  color: var(--color-light);
+  line-height: 1.6;
+}
+
+.contact__option {
+  padding: 1.5rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__option::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-primary), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact__option:hover::before {
+  opacity: 1;
+}
+
+.contact__option__icon {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 0.8rem;
+  filter: drop-shadow(0 0 6px var(--color-primary-glow));
+  transition: var(--transition);
+}
+
+.contact__option:hover .contact__option__icon {
+  transform: scale(1.1);
+}
+
+.contact__option h4 {
+  font-size: 1.05rem;
+  color: var(--color-white);
+  font-weight: 700;
 }
 
 .contact__option h5 {
   color: var(--color-light);
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
 }
 
-/*form starts from here */
-form {
+.contact__option a {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.contact__option a:hover {
+  gap: 8px;
+}
+
+/* Agency Form Styling */
+.agency-inquiry-form {
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.4rem;
+  position: relative;
+  overflow: hidden;
 }
 
+.agency-inquiry-form::before {
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  left: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.06), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.agency-inquiry-form h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: 0.2rem;
+}
+
+.form-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-light);
+  margin-bottom: 0.5rem;
+}
+
+.budget-selection-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.input-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-light);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.budget-pills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+.budget-pill {
+  padding: 0.65rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-variant);
+  border: 1px solid var(--color-border);
+  color: var(--color-light);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.budget-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(126, 200, 52, 0.15), rgba(0, 210, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.budget-pill:hover::before {
+  opacity: 1;
+}
+
+.budget-pill:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.budget-pill.active {
+  background: linear-gradient(135deg, var(--color-primary), #63a825);
+  color: #0b0f19;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 18px var(--color-primary-glow), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  font-weight: 800;
+}
+
+.budget-pill.active::before {
+  display: none;
+}
+
+.form-grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Form Inputs */
 input,
 textarea,
 select {
   width: 100%;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  background: transparent;
-  border: 2px solid var(--color-primary-variant);
-  resize: none;
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radius-sm);
+  background: rgba(15, 22, 36, 0.8);
+  border: 1px solid var(--color-border);
   color: var(--color-white);
-  font-family: "Poppins", sans-serif;
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: var(--transition);
 }
 
-select {
-  appearance: none;
-  -webkit-appearance: none;
-  cursor: pointer;
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-variant), 0 0 15px var(--color-primary-glow);
+  outline: none;
 }
 
 select option {
-  background: var(--color-bg-variant);
-  color: var(--color-white);
+  background: #0f1624;
+  color: #fff;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--color-light);
+  color: var(--color-muted);
 }
 
-input.form-error,
-textarea.form-error,
-select.form-error {
-  border-color: #ff4d4f;
+.form-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
 }
 
 .form-error-msg {
-  color: #ff4d4f;
-  margin-top: -0.6rem;
-  font-size: 0.85rem;
+  color: #ef4444;
+  font-size: 0.78rem;
+  margin-top: 4px;
+  display: block;
 }
 
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.submit-inquiry-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
 }
 
-.msg-success {
-  color: #4caf50;
-  text-align: center;
+.submit-inquiry-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
 }
 
-.msg-error {
-  color: #ff4d4f;
-  text-align: center;
+.submit-inquiry-btn:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
-/*form ends here */
-
-/*Media queries for MEDIUM DEVICES ----->>> */
 @media screen and (max-width: 1024px) {
   .container.contact__container {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-}
-
-/*Media queries for SMALL DEVICES ----->>> */
-@media screen and (max-width: 600px) {
-  .container.contact__container {
-    width: var(--container-width-sm);
+  .budget-pills-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/*===========Finished All Css here==============*/
+@media screen and (max-width: 600px) {
+  .form-grid-row {
+    grid-template-columns: 1fr;
+  }
+  .agency-inquiry-form {
+    padding: 1.5rem;
+  }
+}

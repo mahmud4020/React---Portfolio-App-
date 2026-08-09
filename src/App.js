@@ -28,9 +28,6 @@ const App = () => {
     const [email, setEmail] = useState('');
     const [isChatAllowed, setIsChatAllowed] = useState(false);
 
-    // ========================
-    // START CHAT (save email)
-    // ========================
     const handleStartChat = () => {
         if (!email || !email.includes('@')) {
             alert('Valid email required');
@@ -41,9 +38,6 @@ const App = () => {
         setIsChatAllowed(true);
     };
 
-    // ========================
-    // OPEN CHAT
-    // ========================
     const handleOpenChat = () => {
         console.log('Opening chat...');
         const savedEmail = localStorage.getItem('chat_email');
@@ -63,7 +57,6 @@ const App = () => {
             <TranslationLauncher />
             <BackToTop />
 
-            {/* Chat Launcher */}
             <ChatLauncher onClick={handleOpenChat} />
 
             <Router>
@@ -76,9 +69,9 @@ const App = () => {
                             path="/about"
                             element={
                                 <Page
-                                    title="About Sahed"
-                                    description="Learn more about Sk Sahed Ahmed, a fullstack software developer with 4+ years of experience building scalable web & mobile applications with React, Next.js, Laravel and React Native."
-                                    url="https://sahedahmed.netlify.app/about"
+                                    title="About Enostation"
+                                    description="Learn more about Enostation, a web development agency building modern web & mobile applications with React, Next.js, Laravel and more."
+                                    url="https://enostation.netlify.app/about"
                                 >
                                     <About />
                                 </Page>
@@ -88,9 +81,9 @@ const App = () => {
                             path="/experience"
                             element={
                                 <Page
-                                    title="Experience & Skills"
-                                    description="Skills and experience of Sk Sahed Ahmed: Frontend (React, Next.js, JavaScript, Tailwind) and Backend (PHP, Laravel, MySQL, Node.js) development."
-                                    url="https://sahedahmed.netlify.app/experience"
+                                    title="Technologies & Skills"
+                                    description="Technologies used by Enostation: Frontend (React, Next.js, JavaScript, Tailwind) and Backend (PHP, Laravel, MySQL, Node.js) development."
+                                    url="https://enostation.netlify.app/experience"
                                 >
                                     <Experience />
                                 </Page>
@@ -101,8 +94,8 @@ const App = () => {
                             element={
                                 <Page
                                     title="Services"
-                                    description="Services by Sk Sahed Ahmed: Frontend development with React & Next.js, Backend development with PHP & Laravel, and AI Automation systems."
-                                    url="https://sahedahmed.netlify.app/services"
+                                    description="Services by Enostation: Frontend development with React & Next.js, Backend development with PHP & Laravel, and AI Automation systems."
+                                    url="https://enostation.netlify.app/services"
                                 >
                                     <Services />
                                 </Page>
@@ -113,8 +106,8 @@ const App = () => {
                             element={
                                 <Page
                                     title="Portfolio & Projects"
-                                    description="Explore projects by Sk Sahed Ahmed: web applications, mobile apps, React apps, MERN apps, PHP apps and more."
-                                    url="https://sahedahmed.netlify.app/portfolio"
+                                    description="Explore projects by Enostation: web applications, mobile apps, React apps, MERN apps, PHP apps and more."
+                                    url="https://enostation.netlify.app/portfolio"
                                 >
                                     <Portfolio />
                                 </Page>
@@ -126,8 +119,8 @@ const App = () => {
                             element={
                                 <Page
                                     title="Testimonials"
-                                    description="Read reviews from clients who have worked with Sk Sahed Ahmed on web & mobile app development projects."
-                                    url="https://sahedahmed.netlify.app/testimonial"
+                                    description="Read reviews from clients who have worked with Enostation on web & mobile app development projects."
+                                    url="https://enostation.netlify.app/testimonial"
                                 >
                                     <Testimonial />
                                 </Page>
@@ -138,8 +131,8 @@ const App = () => {
                             element={
                                 <Page
                                     title="Contact"
-                                    description="Get in touch with Sk Sahed Ahmed for web & mobile app development. Email, WhatsApp, Messenger or use the contact form to discuss your project."
-                                    url="https://sahedahmed.netlify.app/contact"
+                                    description="Get in touch with Enostation for web & mobile app development. Email, WhatsApp, Messenger or use the contact form to discuss your project."
+                                    url="https://enostation.netlify.app/contact"
                                 >
                                     <Contact />
                                 </Page>
@@ -156,9 +149,6 @@ const App = () => {
                 </div>
             </Router>
 
-            {/* =========================
-                EMAIL GATE MODAL
-            ========================= */}
             {showChat && !isChatAllowed && (
                 <div
                     style={{
@@ -177,11 +167,10 @@ const App = () => {
                         overflow: 'hidden',
                     }}
                 >
-                    {/* Header */}
                     <div
                         style={{
                             padding: '12px',
-                            background: '#007acc',
+                            background: '#7ec834',
                             color: 'white',
                             fontWeight: 'bold',
                             display: 'flex',
@@ -231,7 +220,7 @@ const App = () => {
                             style={{
                                 width: '100%',
                                 padding: '10px',
-                                backgroundColor: '#007acc',
+                                backgroundColor: '#7ec834',
                                 color: 'white',
                                 border: 'none',
                                 borderRadius: '6px',
@@ -243,9 +232,6 @@ const App = () => {
                     </div>
                 </div>
             )}
-            {/* =========================
-                CHAT UI
-            ========================= */}
             {showChat && isChatAllowed && (
                 <div className="fixed bottom-20 right-6 w-80 max-w-full z-50 shadow-lg">
                     <ChatContainer isOpen={showChat} setIsOpen={setShowChat} email={email} />

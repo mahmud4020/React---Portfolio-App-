@@ -1,75 +1,89 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./nav.css";
-import { AiOutlineHome } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
-import { GiNotebook } from "react-icons/gi";
+import { AiOutlineHome, AiOutlineUser, AiFillProject, AiOutlineThunderbolt } from "react-icons/ai";
 import { MdMedicalServices } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
-import { AiFillProject } from "react-icons/ai";
 import { BsTag } from "react-icons/bs";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import LOGO from "../../Assets/enostation-logo.png";
+
 
 const Nav = () => {
-  const [activeNav, setActiveNav] = useState("#header");
+  const [activeNav, setActiveNav] = useState("/");
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setActiveNav(location.pathname);
+  }, [location]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav>
-      <Link
-        to="/"
-        onClick={() => setActiveNav("#header")}
-        className={activeNav === "#header" ? "active" : ""}
-      >
-        <AiOutlineHome />
-      </Link>
-      <Link
-        to="/about"
-        onClick={() => setActiveNav("#about")}
-        className={activeNav === "#about" ? "active" : ""}
-      >
-        <AiOutlineUser />
-      </Link>
-      <Link
-        to="/experience"
-        onClick={() => setActiveNav("#experience")}
-        className={activeNav === "#experience" ? "active" : ""}
-      >
-        <GiNotebook />
-      </Link>
+    <>
+      {/* Top Agency Fixed Header */}
+      <header className={`agency-header ${scrolled ? "scrolled" : ""}`}>
+        <div className="agency-header-container">
+          <Link to="/" className="agency-logo-brand" onClick={() => setActiveNav("/")}>
+            <img src={LOGO} alt="Enostation Agency Logo" className="agency-logo-img" />
+            <div className="agency-brand-text">
+              <span className="agency-name">ENOSTATION</span>
+              <span className="agency-tag">DIGITAL AGENCY</span>
+            </div>
+          </Link>
 
-      <Link
-        to="/services"
-        onClick={() => setActiveNav("#services")}
-        className={activeNav === "#services" ? "active" : ""}
-      >
-        <MdMedicalServices />
-      </Link>
+          <nav className="agency-desktop-nav">
+            <Link to="/" className={activeNav === "/" ? "active" : ""}>Home</Link>
+            <Link to="/about" className={activeNav === "/about" ? "active" : ""}>About</Link>
+            <Link to="/services" className={activeNav === "/services" ? "active" : ""}>Services</Link>
+            <Link to="/portfolio" className={activeNav === "/portfolio" ? "active" : ""}>Work</Link>
+            <Link to="/pricing" className={activeNav === "/pricing" ? "active" : ""}>Pricing</Link>
+            <Link to="/testimonial" className={activeNav === "/testimonial" ? "active" : ""}>Reviews</Link>
+            <Link to="/contact" className={activeNav === "/contact" ? "active" : ""}>Contact</Link>
+          </nav>
 
-      <Link
-        to="/pricing"
-        onClick={() => setActiveNav("#pricing")}
-        className={activeNav === "#pricing" ? "active" : ""}
-      >
-        <BsTag />
-      </Link>
+          <div className="agency-header-actions">
+            <Link to="/contact" className="btn btn-primary header-cta-btn">
+              <AiOutlineThunderbolt /> Get a Quote
+            </Link>
+          </div>
+        </div>
+      </header>
 
-      <Link
-        to="/portfolio"
-        onClick={() => setActiveNav("#portfolio")}
-        className={activeNav === "#portfolio" ? "active" : ""}
-      >
-        <AiFillProject />
-      </Link>
-
-      <Link
-        to="/contact"
-        onClick={() => setActiveNav("#contact")}
-        className={activeNav === "#contact" ? "active" : ""}
-      >
-        <RiContactsFill />
-      </Link>
-    </nav>
+      {/* Floating Bottom Quick Nav for Mobile */}
+      <nav className="agency-mobile-floating-nav">
+        <Link to="/" onClick={() => setActiveNav("/")} className={activeNav === "/" ? "active" : ""} title="Home">
+          <AiOutlineHome />
+        </Link>
+        <Link to="/about" onClick={() => setActiveNav("/about")} className={activeNav === "/about" ? "active" : ""} title="About">
+          <AiOutlineUser />
+        </Link>
+        <Link to="/services" onClick={() => setActiveNav("/services")} className={activeNav === "/services" ? "active" : ""} title="Services">
+          <MdMedicalServices />
+        </Link>
+        <Link to="/portfolio" onClick={() => setActiveNav("/portfolio")} className={activeNav === "/portfolio" ? "active" : ""} title="Work">
+          <AiFillProject />
+        </Link>
+        <Link to="/pricing" onClick={() => setActiveNav("/pricing")} className={activeNav === "/pricing" ? "active" : ""} title="Pricing">
+          <BsTag />
+        </Link>
+        <Link to="/contact" onClick={() => setActiveNav("/contact")} className={activeNav === "/contact" ? "active" : ""} title="Contact">
+          <RiContactsFill />
+        </Link>
+      </nav>
+    </>
   );
 };
 
 export default Nav;
+

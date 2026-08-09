@@ -9,7 +9,7 @@ export default function AIChat({ onClose, email }) {
     const [messages, setMessages] = useState([
         {
             role: 'bot',
-            text: '👋 Hello! I’m here to help you with Sahed’s services. Ask anything.',
+            text: 'Hello! I\'m here to help you with Enostation\'s services. Ask anything.',
         },
     ]);
     const [input, setInput] = useState('');
@@ -18,22 +18,22 @@ export default function AIChat({ onClose, email }) {
     const quickQuestions = [
         {
             question: 'How to get started?',
-            answer: '🚀 To start, an advance payment is required. Then payments follow project milestones.',
+            answer: 'To start, an advance payment is required. Then payments follow project milestones.',
         },
 
         {
             question: 'What technologies do you use?',
-            answer: '🛠️ I primarily work with Next.js, Laravel (PHP), and React Native for mobile app development technologies.',
+            answer: 'We primarily work with Next.js, Laravel (PHP), React Native for mobile, and React for frontend development.',
         },
 
         {
             question: 'How do you ensure project quality?',
-            answer: '✅ I follow best coding practices, test thoroughly, and maintain clear documentation.',
+            answer: 'We follow best coding practices, test thoroughly, and maintain clear documentation.',
         },
 
         {
             question: 'About Payment Terms',
-            answer: '💰 Payment Terms:\n- 35% advance before starting.\n- 35% after 50% completion.\n- Remaining 30% after final delivery.',
+            answer: 'Payment Terms:\n- 35% advance before starting.\n- 35% after 50% completion.\n- Remaining 30% after final delivery.',
         },
     ];
 
@@ -94,7 +94,6 @@ export default function AIChat({ onClose, email }) {
         }
     };
 
-    // This triggers on quick question click
     const handleQuickQuestionClick = (answer) => {
         console.log('Quick question clicked:', answer);
         setMessages((prev) => [...prev, { role: 'bot', text: answer }]);
@@ -102,7 +101,6 @@ export default function AIChat({ onClose, email }) {
 
     return (
         <div className="ai-chat-container">
-            {/* Header */}
             <div className="ai-chat-header">
                 <h2>AI Assistant</h2>
                 <button onClick={onClose}>
@@ -110,7 +108,6 @@ export default function AIChat({ onClose, email }) {
                 </button>
             </div>
 
-            {/* Quick Questions */}
             <div className="quick-questions">
                 {quickQuestions.map(({ question, answer }, idx) => (
                     <button
@@ -124,7 +121,6 @@ export default function AIChat({ onClose, email }) {
                 ))}
             </div>
 
-            {/* Messages */}
             <div className="ai-chat-messages" style={{ overflowY: 'auto', flex: 1 }}>
                 {messages.map((msg, i) => (
                     <div key={i} className={msg.role === 'user' ? 'message-user' : 'message-bot'}>
@@ -146,7 +142,6 @@ export default function AIChat({ onClose, email }) {
                 </div>
             )}
 
-            {/* Input */}
             <div className="ai-chat-input-area">
                 <input
                     type="text"

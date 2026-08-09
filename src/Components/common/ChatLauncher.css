@@ -2,12 +2,12 @@
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
-  background-color: #007acc;
+  background-color: #7ec834;
   color: white;
   padding: 1rem;
   border-radius: 9999px;
-  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5),
-    0 4px 6px -4px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 15px -3px rgba(126, 200, 52, 0.5),
+    0 4px 6px -4px rgba(126, 200, 52, 0.3);
   z-index: 50;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -16,16 +16,16 @@
 }
 
 .chat-launcher-btn:hover {
-  background-color: #1d4ed8;
+  background-color: #6ab528;
 }
 
 /* Tooltip container */
 .chat-launcher-btn::after {
-  content: "Hi! I’m Sahed’s AI Assistant";
+  content: "Hi! I'm Enostation's AI Assistant";
   position: fixed;
   bottom: 4.75rem;
   right: 2.5rem;
-  background: #1e40af;
+  background: #1a1a2e;
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -53,7 +53,7 @@
   height: 0;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
-  border-top: 7px solid #1e40af;
+  border-top: 7px solid #1a1a2e;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;

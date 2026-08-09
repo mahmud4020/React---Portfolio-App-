@@ -14,8 +14,8 @@ const SeeMoreBlogs = () => {
       <section id="blog">
         <SEO
           title="All Blogs"
-          description="Browse all technical blogs by Sk Sahed Ahmed on web development, React, Next.js, Laravel and software engineering."
-          url="https://sahedahmed.netlify.app/blogs"
+          description="Browse all technical blogs by Enostation on web development, React, Next.js, Laravel and software engineering."
+          url="https://enostation.netlify.app/blogs"
         />
         <h2>{t('blog.all_blogs')}</h2>
 

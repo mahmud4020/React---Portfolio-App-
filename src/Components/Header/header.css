@@ -1,88 +1,234 @@
-header {
-  height: 100vh;
-  padding-top: 7rem;
-  margin-bottom: 30vh;
-}
-
-.header_container {
-  text-align: center;
-  height: 100%;
+/* Agency Hero Section Styling */
+.agency-hero-section {
+  min-height: 100vh;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
 }
 
-/*CTA Css starts from here*/
-.cta {
-  margin-top: 2.5rem;
-  display: flex;
-  gap: 1.2rem;
-  justify-content: center;
+.agency-hero-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
 }
 
-/*Header socials Css starts from here*/
-.header__socials {
+.hero-content-wrapper {
   display: flex;
-  justify-content: center;
-  gap: 0.8rem;
   flex-direction: column;
-  position: absolute;
-  left: 0;
-  top: 17rem;
+  align-items: flex-start;
 }
 
-.header__socials::after {
-  content: "";
-  width: 1px;
-  height: 2rem;
-  background: var(--color-primary);
+.agency-hero-title {
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.12;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.03em;
 }
 
-/*Sahed(me) image Css starts from here*/
-.me {
-  background: linear-gradient(var(--color-primary), transparent);
-  width: 22rem;
-  height: 67vh;
+.agency-hero-sub {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1.2rem;
+  height: 2.2rem;
+}
+
+.agency-hero-description {
+  font-size: 1.05rem;
+  color: var(--color-light);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.agency-cta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-tech-pills {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.tech-pill-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-pill-item {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: var(--color-bg-variant);
+  border: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-light);
+  transition: var(--transition);
+}
+
+.tech-pill-item:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-variant);
+}
+
+/* Visual Wrapper & Glass Card */
+.hero-visual-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.visual-card-glass {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 420px;
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.visual-brand-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border-glow);
+  padding: 1.5rem;
+  box-shadow: 0 0 40px var(--color-primary-glow);
+}
+
+.floating-badge {
   position: absolute;
-  left: calc(50% - 11rem);
+  background: rgba(15, 22, 36, 0.9);
+  border: 1px solid var(--color-border-glow);
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.badge-icon {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.badge-top-right {
+  top: 20px;
+  right: -20px;
+}
+
+.badge-bottom-left {
+  bottom: 30px;
+  left: -20px;
+}
+
+/* Stats Banner */
+.agency-stats-banner {
   margin-top: 4rem;
-  margin-bottom: 4rem;
-  border-radius: 12rem 12rem 0 0;
-  padding: 4rem 0.6rem  0.6rem;
+  padding: 2rem 0;
+  background: var(--glass-bg);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(16px);
 }
 
-#pic {
-  border-radius: 12rem 12rem 0 0;
-  height: 60vh;
-  margin-top: -3.5rem;
-
+.stats-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
 }
 
-/*Scroll below Css starts from here*/
-.scroll__down {
-  position: absolute;
-  right: 2.3rem;
-  top: 20rem;
-  transform: rotate(90deg);
-  font-weight: 300;
+.stat-banner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-banner-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+.stat-banner-label {
   font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-light);
+  margin-top: 4px;
 }
 
-/*Media queries for MEDIUM DEVICES ----->>> */
 @media screen and (max-width: 1024px) {
-  header {
-    height: 68vh;
+  .agency-hero-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-visual-wrapper {
+    margin-top: 1rem;
+  }
+
+  .agency-hero-title {
+    font-size: 2.8rem;
   }
 }
 
-/*Media queries for SMALL DEVICES ----->>> */
 @media screen and (max-width: 600px) {
-  header {
-    height: 100vh;
+  .agency-hero-title {
+    font-size: 2.1rem;
   }
 
-  .header__socials,
-  .scroll__down {
-    display: none;
+  .agency-hero-sub {
+    font-size: 1.05rem;
+  }
+
+  .stats-banner-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .visual-card-glass {
+    height: 320px;
+  }
+
+  .floating-badge {
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 }
 
-/*===========Finished All Css here==============*/

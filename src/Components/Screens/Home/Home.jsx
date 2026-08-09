@@ -10,53 +10,36 @@ import Testimonial from "../../Testimonial/Testimonial";
 import SEO from "../../common/SEO";
 
 const Home = () => {
-  const personJsonLd = {
+  const organizationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Sk Sahed Ahmed",
-    "jobTitle": "Fullstack Software Developer",
+    "@type": "Organization",
+    "name": "Enostation",
     "description":
-      "Fullstack software developer with 4.5+ years of experience in web & mobile app development.",
-    "url": "https://sahedahmed.netlify.app",
+      "Web development agency specializing in modern web applications, mobile apps, and AI-powered solutions.",
+    "url": "https://enostation.netlify.app",
     "email": "mailto:ssahed65@gmail.com",
     "telephone": "+8801616516753",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Satkhira",
-      "addressRegion": "Khulna",
-      "addressCountry": "BD"
-    },
     "sameAs": [
       "https://github.com/sahedalways",
       "https://www.linkedin.com/in/sahedstar/",
       "https://www.facebook.com/sahedstar"
-    ],
-    "knowsAbout": [
-      "React",
-      "Next.js",
-      "PHP",
-      "Laravel",
-      "React Native",
-      "AI Integration",
-      "SaaS Development",
-      "Automation Systems"
     ]
   };
 
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Sk Sahed Ahmed - Portfolio",
-    "url": "https://sahedahmed.netlify.app"
+    "name": "Enostation - Web Development Agency",
+    "url": "https://enostation.netlify.app"
   };
 
   return (
     <>
       <SEO
         title="Home"
-        description="Portfolio of Sk Sahed Ahmed, fullstack software developer from Bangladesh. Web, mobile & SaaS development using React, Next.js, Laravel and React Native."
-        url="https://sahedahmed.netlify.app"
-        jsonLd={[personJsonLd, websiteJsonLd]}
+        description="Enostation is a web development agency building modern web, mobile & SaaS applications using React, Next.js, Laravel and more."
+        url="https://enostation.netlify.app"
+        jsonLd={[organizationJsonLd, websiteJsonLd]}
       />
 
       <Header />

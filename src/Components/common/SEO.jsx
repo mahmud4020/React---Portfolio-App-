@@ -1,16 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://sahedahmed.netlify.app';
-const DEFAULT_IMAGE =
-    'https://i.ibb.co/Xx8TR9fr/Whats-App-Image-2025-03-17-at-23-28-56-3a126ea6.jpg';
+const SITE_URL = 'https://enostation.netlify.app';
+const DEFAULT_IMAGE = 'https://enostation.netlify.app/enostation-logo.png';
 
-const DEFAULT_TITLE = 'Sk Sahed Ahmed - Fullstack Software Developer';
+const DEFAULT_TITLE = 'Enostation - Web Development Agency';
 const DEFAULT_DESCRIPTION =
-    'Sk Sahed Ahmed is a fullstack software developer with 4.5+ years of experience building scalable web & mobile applications using React, Next.js, Laravel and React Native.';
+    'Enostation is a web development agency specializing in modern web applications, mobile apps, and AI-powered solutions using React, Next.js, Laravel and more.';
 
 const SEO = ({ title, description, image, url, type = 'website', jsonLd }) => {
-    const pageTitle = title ? `${title} | Sk Sahed Ahmed` : DEFAULT_TITLE;
+    const pageTitle = title ? `${title} | Enostation` : DEFAULT_TITLE;
     const pageDescription = description || DEFAULT_DESCRIPTION;
     const pageImage = image || DEFAULT_IMAGE;
     const pageUrl = url || SITE_URL;
@@ -26,7 +25,7 @@ const SEO = ({ title, description, image, url, type = 'website', jsonLd }) => {
             <meta property="og:type" content={type} />
             <meta property="og:url" content={pageUrl} />
             <meta property="og:image" content={pageImage} />
-            <meta property="og:site_name" content="Sk Sahed Ahmed - Portfolio Website" />
+            <meta property="og:site_name" content="Enostation - Web Development Agency" />
 
             <meta name="twitter:title" content={pageTitle} />
             <meta name="twitter:description" content={pageDescription} />

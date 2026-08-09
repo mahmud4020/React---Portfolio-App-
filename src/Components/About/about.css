@@ -1,142 +1,131 @@
-#about {
-    margin-top: 20vh;
-}
-
+/* Agency About Section Styling */
 .about__container {
     display: grid;
-    grid-template-columns: 35% 50%;
-    gap: 15%;
+    grid-template-columns: 35% 58%;
+    gap: 7%;
+    align-items: center;
 }
 
 .about__sahed {
+    position: relative;
     width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 2rem;
-    background: linear-gradient(45deg, transparent, var(--color-primary), transparent);
-    display: grid;
-    place-items: center;
 }
 
 .about__sahed__image {
-    border-radius: 2rem;
+    position: relative;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    transform: rotate(10deg);
-    transition: var(--transition);
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    backdrop-filter: blur(16px);
+    text-align: center;
 }
 
 .about__sahed__image img {
-    height: 50%;
+    border-radius: var(--radius-md);
+    height: 320px;
+    object-fit: contain;
+    background: radial-gradient(circle, var(--color-primary-variant) 0%, transparent 70%);
 }
 
-.about__sahed__image:hover {
-    transform: rotate(0deg);
+.sahed-overlay {
+    margin-top: 1rem;
 }
 
-.about__cards {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    gap: 1.5rem;
-}
-
-.about__card {
-    background: var(--color-bg-variant);
-    border: 1px solid transparent;
-    border-radius: 1rem;
-    padding: 2rem;
-    text-align: center;
-    transition: var(--transition);
-}
-
-.about__card:hover {
-    background: transparent;
-    border-color: var(--color-primary-variant);
-    cursor: default;
-}
-
-.about__icon {
-    color: var(--color-primary);
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-
-.about__card h5 {
-    font-size: 0.95rem;
-}
-
-.about__card small {
-    font-size: 0.7rem;
-    color: var(--color-light);
-}
-
-.about__content p {
-    margin: 2rem 0 2.6rem 0;
-    color: var(--color-light);
-}
-
-/*Media queries for MEDIUM DEVICES ----->>> */
-@media screen and (max-width: 1024px) {
-    .about__container {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    .about__sahed {
-        width: 50%;
-        margin: 2rem auto 4rem;
-        height: 18.5rem;
-    }
-
-    .about__content {
-        text-align: center;
-    }
-
-    .about__content p {
-        margin: 1rem 0 1.5rem;
-    }
-}
-
-/*Media queries for SMALL DEVICES ----->>> */
-@media screen and (max-width: 600px) {
-    .about__sahed {
-        width: 65%;
-    }
-
-    #about {
-        margin-top: -17vh;
-    }
-
-    .about__cards {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-    }
-    .about__content {
-        text-align: center;
-    }
-    .about__content p {
-        margin: 1.5rem 0;
-    }
-}
-
-.intro {
-    margin: auto;
-}
-
-.intro-title {
+.sahed-overlay h4 {
     font-size: 1.2rem;
-    font-weight: 600;
     color: var(--color-white);
-    margin-bottom: 0.3rem;
+}
+
+.sahed-overlay p {
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.agency-about-heading {
+    font-size: 1.8rem;
+    line-height: 1.35;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .intro-text {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.7;
     color: var(--color-light);
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
 }
 
-.cta-line {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #2563eb;
-    margin-top: 0.5rem;
+.about__pillars_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 2.2rem;
 }
+
+.pillar-card {
+    padding: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border-radius: var(--radius-md);
+}
+
+.pillar-icon-box {
+    padding: 10px;
+    border-radius: 12px;
+    background: var(--color-primary-variant);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pillar-card .about__icon {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+}
+
+.pillar-card h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 4px;
+}
+
+.pillar-card small {
+    font-size: 0.82rem;
+    color: var(--color-light);
+    line-height: 1.5;
+    display: block;
+}
+
+.about-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .about__container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .about__sahed__image img {
+        height: 250px;
+    }
+    .about__pillars_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .agency-about-heading {
+        font-size: 1.4rem;
+    }
+    .about-actions {
+        flex-direction: column;
+    }
+}
+

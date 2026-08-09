@@ -4,10 +4,9 @@ import TestimonialsData from './TestimonialsData';
 import ReviewModal from './ReviewModal';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FaQuoteLeft } from 'react-icons/fa'; // রিঅ্যাক্ট আইকন যোগ করলে সুন্দর দেখাবে
-import { useTranslation } from 'react-i18next';
+import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 
-import { Pagination, Autoplay } from 'swiper'; // Autoplay ইমপোর্ট করুন
+import { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -18,14 +17,14 @@ const Testimonial = () => {
         AOS.init({ duration: 1000 });
     }, []);
 
-    const { t } = useTranslation();
     const [Data] = useState(TestimonialsData);
     const [reviewOpen, setReviewOpen] = useState(false);
 
+
     return (
         <section id="testimonials">
-            <h5 data-aos="fade-up">{t('testimonial.subtitle')}</h5>
-            <h2 data-aos="fade-up" data-aos-delay="100">{t('testimonial.title')}</h2>
+            <h5 data-aos="fade-up">Client Proof & Reviews</h5>
+            <h2 data-aos="fade-up" data-aos-delay="100">What Founders & Executives Say</h2>
 
             <Swiper
                 className="container testimonials__container"
@@ -36,9 +35,15 @@ const Testimonial = () => {
                 loop={true}
             >
                 {Data.map(({ id, name, company, avatar, review }) => (
-                    <SwiperSlide key={id} className="testimonial">
+                    <SwiperSlide key={id} className="testimonial glass-card">
                         <div className="client__avatar">
                             <img src={avatar} alt={name} />
+                        </div>
+
+                        <div className="client-rating-stars">
+                            {[...Array(5)].map((_, i) => (
+                                <FaStar key={i} className="star-icon-filled" />
+                            ))}
                         </div>
 
                         <h5 className="client__name">{name}</h5>
@@ -48,13 +53,13 @@ const Testimonial = () => {
                             <FaQuoteLeft
                                 style={{
                                     color: 'var(--color-primary)',
-                                    marginTop: '1rem',
-                                    opacity: 0.4,
+                                    marginTop: '0.8rem',
+                                    opacity: 0.5,
                                 }}
                             />
                         </div>
 
-                        <p className="client__review">{review}</p>
+                        <p className="client__review">"{review}"</p>
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -65,7 +70,7 @@ const Testimonial = () => {
                     className="btn btn-primary"
                     onClick={() => setReviewOpen(true)}
                 >
-                    {t('review_form.write_review')}
+                    Leave a Review
                 </button>
             </div>
 
@@ -75,3 +80,4 @@ const Testimonial = () => {
 };
 
 export default Testimonial;
+

@@ -1,13 +1,13 @@
 {
-    "greeting": "Hey there! I am",
-    "intro": "Sk Sahed Ahmed",
+    "greeting": "Welcome to",
+    "intro": "Enostation",
     "cta": {
-        "get_cv": "Get CV",
+        "our_services": "Our Services",
         "lets_talk": "Let's Talk"
     },
     "scroll_below": "Scroll Below",
-    "get_to_know": "Get to Know",
-    "about_me": "About Me",
+    "get_to_know": "Who We Are",
+    "about_me": "About Enostation",
     "nav": {
         "home": "Home",
         "about": "About",
@@ -17,9 +17,9 @@
     },
     "about": {
         "intro_section": {
-            "title": "Full-Stack Software Developer",
-            "description": "I build fast and scalable web & mobile applications using React, Next.js, React Native, and Laravel. I help startups and businesses turn ideas into reliable digital products with clean architecture and great user experience.",
-            "cta_line": "Have a project in mind? Let’s build it together."
+            "title": "Web Development Agency",
+            "description": "We build fast, scalable, and modern web & mobile applications using React, Next.js, React Native, and Laravel. We help startups and businesses turn ideas into reliable digital products with clean architecture and great user experience.",
+            "cta_line": "Have a project in mind? Let's build it together."
         },
         "stats": [
             {
@@ -38,8 +38,8 @@
     },
 
     "skills_section": {
-        "title": "Skills I Have",
-        "subtitle": "My Experience",
+        "title": "Our Tech Stack",
+        "subtitle": "Technologies We Use",
 
         "frontend": "Frontend Development",
         "backend": "Backend Development",
@@ -51,8 +51,8 @@
         }
     },
     "projects": {
-        "title": "My",
-        "subtitle": "Projects",
+        "title": "Our",
+        "subtitle": "Portfolio",
         "view_live": "Live Preview",
         "view_code": "View Code"
     },
@@ -64,7 +64,7 @@
         "location": "Location"
     },
     "footer": {
-        "copyright": "© 2024 Sk Sahed Ahmed. All rights reserved.",
+        "copyright": "© 2024 Enostation. All rights reserved.",
         "made_with": "Made with"
     },
     "buttons": {
@@ -74,8 +74,8 @@
     },
 
     "services": {
-        "subtitle": "Offers I Provide",
-        "title": "Services",
+        "subtitle": "What We Offer",
+        "title": "Our Services",
         "frontend_title": "Frontend Development",
         "backend_title": "Backend Development",
         "ai_title": "AI Automation",
@@ -196,7 +196,7 @@
     },
 
     "portfolio": {
-        "subtitle": "My Recent Works",
+        "subtitle": "Our Recent Works",
         "title": "Portfolio",
         "filter": {
             "webApp": "Web | Software Development",
@@ -226,14 +226,14 @@
     },
 
     "testimonial": {
-        "subtitle": "Review from Clients",
+        "subtitle": "What Clients Say",
         "title": "Testimonials"
     },
 
     "review_form": {
         "write_review": "Write a Review",
         "title": "Submit Your Review",
-        "subtitle": "Share your experience working with me",
+        "subtitle": "Share your experience working with us",
         "name": "Enter your name...",
         "email": "Enter your email...",
         "rating": "Your Rating",
@@ -253,7 +253,7 @@
 
     "contact_section": {
         "subtitle": "Be in Touch",
-        "title": "Contact Me",
+        "title": "Contact Us",
         "send_message": "Send a Message"
     },
 
@@ -359,12 +359,12 @@
     },
 
     "process": {
-        "subtitle": "How I Work",
-        "title": "My Delivery Process",
+        "subtitle": "How We Work",
+        "title": "Our Delivery Process",
         "steps": [
             {
                 "title": "Discovery",
-                "description": "I analyze your requirements, goals and budget to plan the right solution."
+                "description": "We analyze your requirements, goals and budget to plan the right solution."
             },
             {
                 "title": "Design",
@@ -407,7 +407,7 @@
             },
             {
                 "question": "Can you work on an existing project?",
-                "answer": "Yes. I can take over, fix, upgrade or complete existing projects including code reviews and performance improvements."
+                "answer": "Yes. We can take over, fix, upgrade or complete existing projects including code reviews and performance improvements."
             },
             {
                 "question": "How do we communicate during the project?",
@@ -424,7 +424,7 @@
 
     "testimonial_form": {
         "title": "Share Your Experience",
-        "subtitle": "Worked with me? Leave a review below.",
+        "subtitle": "Worked with us? Leave a review below.",
         "name": "Your name",
         "company": "Company / Country",
         "review": "Write your review...",

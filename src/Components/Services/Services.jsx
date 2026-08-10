@@ -1,27 +1,13 @@
-import AOS from "aos";
-import "aos/dist/aos.css";
-import React, { useEffect } from "react";
+import React from "react";
 import { BiCheck } from "react-icons/bi";
 import { FiLayout, FiServer, FiCpu, FiSmartphone, FiCloud, FiShield, FiArrowRight } from "react-icons/fi";
 import "./services.css";
 import Process from '../Process/Process';
 import BrochureDownload from '../common/BrochureDownload';
+import ScrollReveal from '../common/ScrollReveal';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      disable: false,
-      startEvent: "DOMContentLoaded",
-      offset: 120,
-      easing: "ease",
-      mirror: false,
-      anchorPlacement: "top-bottom",
-    });
-  }, []);
-
-
   const agencyServices = [
     {
       icon: <FiLayout />,
@@ -72,7 +58,7 @@ const Services = () => {
         "Database Optimization & Migration",
         "Role-Based Security & OAuth 2.0",
         "Real-Time WebSockets Architecture",
-        "Automated Automated Backup Systems"
+        "Automated Backup Systems"
       ]
     },
     {
@@ -106,43 +92,49 @@ const Services = () => {
   return (
     <>
       <section id="services">
-        <h5>Our Capabilities</h5>
-        <h2>Digital Solutions & Services</h2>
+        <ScrollReveal>
+          <h5>Our Capabilities</h5>
+          <h2>Digital Solutions & Services</h2>
+        </ScrollReveal>
 
         <div className="container services__container">
           {agencyServices.map((service, index) => (
-            <article key={index} data-aos="fade-up" className="service-card glass-card">
-              <div className="service-card-top">
-                <div className="service-icon-wrapper">
-                  {service.icon}
+            <ScrollReveal key={service.title} delay={index * 0.08}>
+              <article className="service-card glass-card">
+                <div className="service-card-top">
+                  <div className="service-icon-wrapper">
+                    {service.icon}
+                  </div>
+                  <span className="service-badge-pill">{service.badge}</span>
                 </div>
-                <span className="service-badge-pill">{service.badge}</span>
-              </div>
 
-              <h3>{service.title}</h3>
-              <p className="service-desc">{service.description}</p>
+                <h3>{service.title}</h3>
+                <p className="service-desc">{service.description}</p>
 
-              <ul className="service-features-list">
-                {service.features.map((feat, idx) => (
-                  <li key={idx}>
-                    <BiCheck className="feature-check-icon" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
+                <ul className="service-features-list">
+                  {service.features.map((feat) => (
+                    <li key={feat}>
+                      <BiCheck className="feature-check-icon" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <div className="service-card-footer">
-                <Link to="/contact" className="service-cta-link">
-                  Get Project Estimate <FiArrowRight />
-                </Link>
-              </div>
-            </article>
+                <div className="service-card-footer">
+                  <Link to="/contact" className="service-cta-link">
+                    Get Project Estimate <FiArrowRight />
+                  </Link>
+                </div>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
 
-        <div className="brochure-cta" style={{ textAlign: 'center', marginTop: '4rem' }}>
-          <BrochureDownload />
-        </div>
+        <ScrollReveal delay={0.2}>
+          <div className="brochure-cta">
+            <BrochureDownload />
+          </div>
+        </ScrollReveal>
       </section>
 
       <Process />
@@ -151,4 +143,3 @@ const Services = () => {
 };
 
 export default Services;
-

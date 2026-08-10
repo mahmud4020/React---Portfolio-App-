@@ -1,12 +1,11 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AiOutlineMail, AiOutlineSend } from 'react-icons/ai';
 import { BsWhatsapp } from 'react-icons/bs';
 import { RiMessengerLine } from 'react-icons/ri';
 import { FiDollarSign } from 'react-icons/fi';
 import './contact.css';
 import Modal from '../common/Modal';
+import ScrollReveal from '../common/ScrollReveal';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -31,18 +30,6 @@ const Contact = () => {
         projectType: 'Web & SaaS Application',
         message: '',
     });
-
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            disable: false,
-            startEvent: 'DOMContentLoaded',
-            offset: 120,
-            easing: 'ease',
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -112,12 +99,13 @@ const Contact = () => {
 
     return (
         <section id="contact">
-            <h5 data-aos="fade-up">Let's Build Something Great</h5>
-            <h2 data-aos="fade-up" data-aos-delay="100">Start Your Agency Project</h2>
+            <ScrollReveal>
+                <h5>Let's Build Something Great</h5>
+                <h2>Start Your Agency Project</h2>
+            </ScrollReveal>
 
             <div className="container contact__container">
-                {/* Agency Direct Channels */}
-                <div data-aos="fade-right" className="contact__options">
+                <ScrollReveal direction="right" className="contact__options">
                     <div className="contact-card-info glass-card">
                         <h3>Direct Agency Channels</h3>
                         <p>Prefer instant communication? Connect directly with our lead engineering team.</p>
@@ -151,95 +139,95 @@ const Contact = () => {
                             Open Messenger
                         </a>
                     </article>
-                </div>
+                </ScrollReveal>
 
-                {/* Interactive Project Inquiry Form */}
-                <form data-aos="fade-left" className="agency-inquiry-form glass-card" onSubmit={handleSubmit} noValidate>
-                    <h3>Project Details & Budget</h3>
-                    <p className="form-subtitle">Fill out the brief below and receive a project estimate within 24 hours.</p>
+                <ScrollReveal direction="left" delay={0.1}>
+                    <form className="agency-inquiry-form glass-card" onSubmit={handleSubmit} noValidate>
+                        <h3>Project Details & Budget</h3>
+                        <p className="form-subtitle">Fill out the brief below and receive a project estimate within 24 hours.</p>
 
-                    {/* Budget Selection Pills */}
-                    <div className="budget-selection-wrapper">
-                        <label className="input-label"><FiDollarSign /> Estimated Project Budget</label>
-                        <div className="budget-pills-grid">
-                            {BUDGET_OPTIONS.map((b) => (
-                                <button
-                                    key={b}
-                                    type="button"
-                                    className={`budget-pill ${selectedBudget === b ? 'active' : ''}`}
-                                    onClick={() => setSelectedBudget(b)}
-                                >
-                                    {b}
-                                </button>
-                            ))}
+                        <div className="budget-selection-wrapper">
+                            <label className="input-label"><FiDollarSign /> Estimated Project Budget</label>
+                            <div className="budget-pills-grid">
+                                {BUDGET_OPTIONS.map((b) => (
+                                    <button
+                                        key={b}
+                                        type="button"
+                                        className={`budget-pill ${selectedBudget === b ? 'active' : ''}`}
+                                        onClick={() => setSelectedBudget(b)}
+                                    >
+                                        {b}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="form-grid-row">
-                        <div>
+                        <div className="form-grid-row">
+                            <div>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Your Name or Company *"
+                                    value={formValues.name}
+                                    onChange={handleChange}
+                                    className={errors.name ? 'form-error' : ''}
+                                    required
+                                />
+                                {errors.name && <small className="form-error-msg">{errors.name}</small>}
+                            </div>
+
+                            <div>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Work Email *"
+                                    value={formValues.email}
+                                    onChange={handleChange}
+                                    className={errors.email ? 'form-error' : ''}
+                                    required
+                                />
+                                {errors.email && <small className="form-error-msg">{errors.email}</small>}
+                            </div>
+                        </div>
+
+                        <div className="form-grid-row">
                             <input
-                                type="text"
-                                name="name"
-                                placeholder="Your Name or Company *"
-                                value={formValues.name}
+                                type="tel"
+                                name="phone"
+                                placeholder="Phone / WhatsApp Number (Optional)"
+                                value={formValues.phone}
                                 onChange={handleChange}
-                                className={errors.name ? 'form-error' : ''}
-                                required
                             />
-                            {errors.name && <small className="form-error-msg">{errors.name}</small>}
+
+                            <select
+                                name="projectType"
+                                value={formValues.projectType}
+                                onChange={handleChange}
+                            >
+                                <option value="Web & SaaS Application">Web & SaaS Application</option>
+                                <option value="AI Automation & Custom LLMs">AI Automation & Custom LLMs</option>
+                                <option value="Mobile App Development">Mobile App Development</option>
+                                <option value="UI/UX & Product Design">UI/UX & Product Design</option>
+                                <option value="Cloud DevOps & Maintenance">Cloud DevOps & Maintenance</option>
+                            </select>
                         </div>
 
-                        <div>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Work Email *"
-                                value={formValues.email}
-                                onChange={handleChange}
-                                className={errors.email ? 'form-error' : ''}
-                                required
-                            />
-                            {errors.email && <small className="form-error-msg">{errors.email}</small>}
-                        </div>
-                    </div>
-
-                    <div className="form-grid-row">
-                        <input
-                            type="tel"
-                            name="phone"
-                            placeholder="Phone / WhatsApp Number (Optional)"
-                            value={formValues.phone}
+                        <textarea
+                            name="message"
+                            rows="6"
+                            placeholder="Tell us about your project goals, timelines, or requirements... *"
+                            value={formValues.message}
                             onChange={handleChange}
-                        />
+                            className={errors.message ? 'form-error' : ''}
+                            required
+                        ></textarea>
+                        {errors.message && <small className="form-error-msg">{errors.message}</small>}
 
-                        <select
-                            name="projectType"
-                            value={formValues.projectType}
-                            onChange={handleChange}
-                        >
-                            <option value="Web & SaaS Application">Web & SaaS Application</option>
-                            <option value="AI Automation & Custom LLMs">AI Automation & Custom LLMs</option>
-                            <option value="Mobile App Development">Mobile App Development</option>
-                            <option value="UI/UX & Product Design">UI/UX & Product Design</option>
-                            <option value="Cloud DevOps & Maintenance">Cloud DevOps & Maintenance</option>
-                        </select>
-                    </div>
-
-                    <textarea
-                        name="message"
-                        rows="6"
-                        placeholder="Tell us about your project goals, timelines, or requirements... *"
-                        value={formValues.message}
-                        onChange={handleChange}
-                        className={errors.message ? 'form-error' : ''}
-                        required
-                    ></textarea>
-                    {errors.message && <small className="form-error-msg">{errors.message}</small>}
-
-                    <button type="submit" className="btn btn-primary submit-inquiry-btn" disabled={sending}>
-                        {sending ? 'Sending Inquiry...' : 'Submit Project Request'} <AiOutlineSend />
-                    </button>
-                </form>
+                        <button type="submit" className="btn btn-primary submit-inquiry-btn" disabled={sending}>
+                            {sending ? 'Sending Inquiry...' : 'Submit Project Request'} <AiOutlineSend />
+                        </button>
+                    </form>
+                </ScrollReveal>
             </div>
 
             <Modal
@@ -258,4 +246,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

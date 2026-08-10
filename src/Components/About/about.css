@@ -4,14 +4,16 @@
     grid-template-columns: 35% 58%;
     gap: 7%;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
-.about__sahed {
+.about__visual {
     position: relative;
     width: 100%;
 }
 
-.about__sahed__image {
+.about__visual__image {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -22,23 +24,34 @@
     text-align: center;
 }
 
-.about__sahed__image img {
+.about__visual__glow {
+    position: absolute;
+    inset: 10%;
+    background: radial-gradient(circle, var(--color-primary-glow), transparent 70%);
+    filter: blur(30px);
+    pointer-events: none;
+}
+
+.about__visual__image img {
     border-radius: var(--radius-md);
     height: 320px;
     object-fit: contain;
-    background: radial-gradient(circle, var(--color-primary-variant) 0%, transparent 70%);
+    position: relative;
+    z-index: 1;
 }
 
-.sahed-overlay {
+.about__visual__overlay {
     margin-top: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
-.sahed-overlay h4 {
+.about__visual__overlay h4 {
     font-size: 1.2rem;
     color: var(--color-white);
 }
 
-.sahed-overlay p {
+.about__visual__overlay p {
     font-size: 0.85rem;
     color: var(--color-primary);
     font-weight: 600;
@@ -81,11 +94,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.pillar-card:hover .pillar-icon-box {
+    background: var(--color-primary);
+}
+
+.pillar-card:hover .about__icon {
+    color: #0b0f19;
 }
 
 .pillar-card .about__icon {
     font-size: 1.3rem;
     color: var(--color-primary);
+    transition: var(--transition);
 }
 
 .pillar-card h5 {
@@ -105,6 +129,7 @@
 .about-actions {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 @media screen and (max-width: 1024px) {
@@ -112,7 +137,7 @@
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    .about__sahed__image img {
+    .about__visual__image img {
         height: 250px;
     }
     .about__pillars_grid {
@@ -128,4 +153,3 @@
         flex-direction: column;
     }
 }
-

@@ -1,37 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./nav.css";
 import { AiOutlineHome, AiOutlineUser, AiFillProject, AiOutlineThunderbolt } from "react-icons/ai";
 import { MdMedicalServices } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { BsTag } from "react-icons/bs";
 import { Link, useLocation } from "react-router-dom";
-import LOGO from "../../Assets/enostation-logo.png";
-
+import LOGO from "../../Assets/enostation.jpeg";
 
 const Nav = () => {
-  const [activeNav, setActiveNav] = useState("/");
-  const [scrolled, setScrolled] = useState(false);
+  const [activeNav, setActiveNav] = React.useState("/");
+  const [scrolled, setScrolled] = React.useState(false);
   const location = useLocation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     setActiveNav(location.pathname);
   }, [location]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 40);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {/* Top Agency Fixed Header */}
       <header className={`agency-header ${scrolled ? "scrolled" : ""}`}>
         <div className="agency-header-container">
           <Link to="/" className="agency-logo-brand" onClick={() => setActiveNav("/")}>
@@ -60,7 +54,6 @@ const Nav = () => {
         </div>
       </header>
 
-      {/* Floating Bottom Quick Nav for Mobile */}
       <nav className="agency-mobile-floating-nav">
         <Link to="/" onClick={() => setActiveNav("/")} className={activeNav === "/" ? "active" : ""} title="Home">
           <AiOutlineHome />
@@ -86,4 +79,3 @@ const Nav = () => {
 };
 
 export default Nav;
-

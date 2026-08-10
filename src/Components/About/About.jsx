@@ -1,26 +1,12 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BsLightningChargeFill, BsShieldCheck } from 'react-icons/bs';
 import { FaCode, FaBrain } from 'react-icons/fa';
-import LOGO from '../../Assets/enostation-logo.png';
+import LOGO from '../../Assets/enostation.jpeg';
 import './about.css';
 import { Link } from 'react-router-dom';
+import ScrollReveal from '../common/ScrollReveal';
 
 const About = () => {
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            disable: false,
-            startEvent: 'DOMContentLoaded',
-            offset: 120,
-            easing: 'ease',
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    }, []);
-
-
     const agencyPillars = [
         {
             icon: <FaCode className="about__icon" />,
@@ -45,51 +31,58 @@ const About = () => {
     ];
 
     return (
-        <section id="about">
-            <h5>Why Choose Us</h5>
-            <h2>Partner With Enostation Agency</h2>
+        <section id="about" className="section--alt">
+            <ScrollReveal>
+                <h5>Why Choose Us</h5>
+                <h2>Partner With Enostation Agency</h2>
+            </ScrollReveal>
 
             <div className="container about__container">
-                <div className="about__sahed">
-                    <div className="about__sahed__image glass-card">
-                        <img data-aos="zoom-in-up" src={LOGO} alt="Enostation Digital Agency" />
-                        <div className="sahed-overlay">
+                <ScrollReveal direction="scale" className="about__visual">
+                    <div className="about__visual__image glass-card">
+                        <div className="about__visual__glow" aria-hidden="true" />
+                        <img src={LOGO} alt="Enostation Digital Agency" />
+                        <div className="about__visual__overlay">
                             <h4>Enostation Agency</h4>
                             <p>Engineering Digital Success</p>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
 
                 <div className="about__content">
-                    <div className="about__intro_block" data-aos="fade-left">
-                        <h3 className="agency-about-heading">
-                            We bridge complex engineering with sleek user experiences.
-                        </h3>
-                        <p className="intro-text">
-                            Enostation is a full-service software development agency. We craft high-converting web applications, robust SaaS platforms, cross-platform mobile apps, and custom AI systems tailored to accelerate business growth.
-                        </p>
-                    </div>
+                    <ScrollReveal direction="left">
+                        <div className="about__intro_block">
+                            <h3 className="agency-about-heading">
+                                We bridge complex engineering with sleek user experiences.
+                            </h3>
+                            <p className="intro-text">
+                                Enostation is a full-service software development agency. We craft high-converting web applications, robust SaaS platforms, cross-platform mobile apps, and custom AI systems tailored to accelerate business growth.
+                            </p>
+                        </div>
+                    </ScrollReveal>
 
                     <div className="about__pillars_grid">
                         {agencyPillars.map((pillar, idx) => (
-                            <div key={idx} data-aos="fade-up" className="pillar-card glass-card">
+                            <ScrollReveal key={pillar.title} delay={idx * 0.08} className="pillar-card glass-card">
                                 <div className="pillar-icon-box">{pillar.icon}</div>
                                 <div>
                                     <h5>{pillar.title}</h5>
                                     <small>{pillar.desc}</small>
                                 </div>
-                            </div>
+                            </ScrollReveal>
                         ))}
                     </div>
 
-                    <div className="about-actions" data-aos="fade-up">
-                        <Link to="/contact" className="btn btn-primary">
-                            Discuss Your Project
-                        </Link>
-                        <Link to="/services" className="btn btn-outline">
-                            Our Capabilities
-                        </Link>
-                    </div>
+                    <ScrollReveal delay={0.2}>
+                        <div className="about-actions">
+                            <Link to="/contact" className="btn btn-primary">
+                                Discuss Your Project
+                            </Link>
+                            <Link to="/services" className="btn btn-outline">
+                                Our Capabilities
+                            </Link>
+                        </div>
+                    </ScrollReveal>
                 </div>
             </div>
         </section>
@@ -97,4 +90,3 @@ const About = () => {
 };
 
 export default About;
-

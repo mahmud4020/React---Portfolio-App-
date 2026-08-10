@@ -1,8 +1,7 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiClipboard, FiLayout, FiCode, FiCheckCircle, FiTruck } from 'react-icons/fi';
+import ScrollReveal from '../common/ScrollReveal';
 import './Process.css';
 
 const DEFAULT_AGENCY_STEPS = [
@@ -20,40 +19,27 @@ const Process = () => {
     const translationSteps = t('process.steps', { returnObjects: true });
     const steps = Array.isArray(translationSteps) && translationSteps.length > 0 ? translationSteps : DEFAULT_AGENCY_STEPS;
 
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            disable: false,
-            startEvent: 'DOMContentLoaded',
-            offset: 120,
-            easing: 'ease',
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    }, []);
-
     return (
-        <section id="process" className="process__section">
-            <h5>How We Build</h5>
-            <h2>Our 5-Step Agency Workflow</h2>
+        <section id="process" className="process__section section--alt">
+            <ScrollReveal>
+                <h5>How We Build</h5>
+                <h2>Our 5-Step Agency Workflow</h2>
+            </ScrollReveal>
 
             <div className="container process__container">
                 {steps.map((step, index) => {
                     const Icon = ICONS[index % ICONS.length];
                     return (
-                        <article
-                            key={index}
-                            data-aos="fade-up"
-                            data-aos-delay={index * 100}
-                            className="process__step glass-card"
-                        >
-                            <span className="process__step__number">0{index + 1}</span>
-                            <div className="process__step__icon">
-                                <Icon />
-                            </div>
-                            <h3>{step.title}</h3>
-                            <p>{step.description}</p>
-                        </article>
+                        <ScrollReveal key={step.title} delay={index * 0.1}>
+                            <article className="process__step glass-card">
+                                <span className="process__step__number">0{index + 1}</span>
+                                <div className="process__step__icon">
+                                    <Icon />
+                                </div>
+                                <h3>{step.title}</h3>
+                                <p>{step.description}</p>
+                            </article>
+                        </ScrollReveal>
                     );
                 })}
             </div>
@@ -62,4 +48,3 @@ const Process = () => {
 };
 
 export default Process;
-

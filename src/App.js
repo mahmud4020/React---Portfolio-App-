@@ -21,7 +21,97 @@ import BackToTop from './Components/common/BackToTop';
 import ChatLauncher from './Components/common/ChatLauncher';
 import ChatContainer from './Components/common/ChatContainer';
 import Page from './Components/common/Page';
+import ScrollProgress from './Components/common/ScrollProgress';
 import TranslationLauncher from './Components/common/TranslationLauncher';
+import useScrollAnimation from './hooks/useScrollAnimation';
+
+const AppRoutes = () => {
+    useScrollAnimation();
+
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+                path="/about"
+                element={
+                    <Page
+                        title="About Enostation"
+                        description="Learn more about Enostation, a web development agency building modern web & mobile applications with React, Next.js, Laravel and more."
+                        url="https://enostation.netlify.app/about"
+                    >
+                        <About />
+                    </Page>
+                }
+            />
+            <Route
+                path="/experience"
+                element={
+                    <Page
+                        title="Technologies & Skills"
+                        description="Technologies used by Enostation: Frontend (React, Next.js, JavaScript, Tailwind) and Backend (PHP, Laravel, MySQL, Node.js) development."
+                        url="https://enostation.netlify.app/experience"
+                    >
+                        <Experience />
+                    </Page>
+                }
+            />
+            <Route
+                path="/services"
+                element={
+                    <Page
+                        title="Services"
+                        description="Services by Enostation: Frontend development with React & Next.js, Backend development with PHP & Laravel, and AI Automation systems."
+                        url="https://enostation.netlify.app/services"
+                    >
+                        <Services />
+                    </Page>
+                }
+            />
+            <Route
+                path="/portfolio"
+                element={
+                    <Page
+                        title="Portfolio & Projects"
+                        description="Explore projects by Enostation: web applications, mobile apps, React apps, MERN apps, PHP apps and more."
+                        url="https://enostation.netlify.app/portfolio"
+                    >
+                        <Portfolio />
+                    </Page>
+                }
+            />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route
+                path="/testimonial"
+                element={
+                    <Page
+                        title="Testimonials"
+                        description="Read reviews from clients who have worked with Enostation on web & mobile app development projects."
+                        url="https://enostation.netlify.app/testimonial"
+                    >
+                        <Testimonial />
+                    </Page>
+                }
+            />
+            <Route
+                path="/contact"
+                element={
+                    <Page
+                        title="Contact"
+                        description="Get in touch with Enostation for web & mobile app development. Email, WhatsApp, Messenger or use the contact form to discuss your project."
+                        url="https://enostation.netlify.app/contact"
+                    >
+                        <Contact />
+                    </Page>
+                }
+            />
+            <Route path="/projects" element={<SeeMore />} />
+            <Route path="/blogs" element={<SeeMoreBlogs />} />
+            <Route path="/blog-details/:id" element={<BlogDetails />} />
+            <Route path="/project-details/:id" element={<ProjectDetails />} />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
+    );
+};
 
 const App = () => {
     const [showChat, setShowChat] = useState(false);
@@ -39,7 +129,6 @@ const App = () => {
     };
 
     const handleOpenChat = () => {
-        console.log('Opening chat...');
         const savedEmail = localStorage.getItem('chat_email');
 
         if (savedEmail) {
@@ -55,185 +144,49 @@ const App = () => {
     return (
         <>
             <TranslationLauncher />
+            <ScrollProgress />
             <BackToTop />
 
             <ChatLauncher onClick={handleOpenChat} />
 
             <Router>
-                <div style={{ overflow: 'hidden' }}>
+                <div className="app-shell">
                     <Navbar />
-
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route
-                            path="/about"
-                            element={
-                                <Page
-                                    title="About Enostation"
-                                    description="Learn more about Enostation, a web development agency building modern web & mobile applications with React, Next.js, Laravel and more."
-                                    url="https://enostation.netlify.app/about"
-                                >
-                                    <About />
-                                </Page>
-                            }
-                        />
-                        <Route
-                            path="/experience"
-                            element={
-                                <Page
-                                    title="Technologies & Skills"
-                                    description="Technologies used by Enostation: Frontend (React, Next.js, JavaScript, Tailwind) and Backend (PHP, Laravel, MySQL, Node.js) development."
-                                    url="https://enostation.netlify.app/experience"
-                                >
-                                    <Experience />
-                                </Page>
-                            }
-                        />
-                        <Route
-                            path="/services"
-                            element={
-                                <Page
-                                    title="Services"
-                                    description="Services by Enostation: Frontend development with React & Next.js, Backend development with PHP & Laravel, and AI Automation systems."
-                                    url="https://enostation.netlify.app/services"
-                                >
-                                    <Services />
-                                </Page>
-                            }
-                        />
-                        <Route
-                            path="/portfolio"
-                            element={
-                                <Page
-                                    title="Portfolio & Projects"
-                                    description="Explore projects by Enostation: web applications, mobile apps, React apps, MERN apps, PHP apps and more."
-                                    url="https://enostation.netlify.app/portfolio"
-                                >
-                                    <Portfolio />
-                                </Page>
-                            }
-                        />
-                        <Route path="/pricing" element={<Pricing />} />
-                        <Route
-                            path="/testimonial"
-                            element={
-                                <Page
-                                    title="Testimonials"
-                                    description="Read reviews from clients who have worked with Enostation on web & mobile app development projects."
-                                    url="https://enostation.netlify.app/testimonial"
-                                >
-                                    <Testimonial />
-                                </Page>
-                            }
-                        />
-                        <Route
-                            path="/contact"
-                            element={
-                                <Page
-                                    title="Contact"
-                                    description="Get in touch with Enostation for web & mobile app development. Email, WhatsApp, Messenger or use the contact form to discuss your project."
-                                    url="https://enostation.netlify.app/contact"
-                                >
-                                    <Contact />
-                                </Page>
-                            }
-                        />
-                        <Route path="/projects" element={<SeeMore />} />
-                        <Route path="/blogs" element={<SeeMoreBlogs />} />
-                        <Route path="/blog-details/:id" element={<BlogDetails />} />
-                        <Route path="/project-details/:id" element={<ProjectDetails />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-
+                    <AppRoutes />
                     <Footer />
                 </div>
             </Router>
 
             {showChat && !isChatAllowed && (
-                <div
-                    style={{
-                        position: 'fixed',
-                        bottom: '1.5rem',
-                        right: '1.5rem',
-                        width: '320px',
-                        height: '450px',
-                        borderRadius: '12px',
-                        zIndex: 2000,
-                        backgroundColor: 'white',
-                        boxShadow:
-                            '0 10px 15px -3px rgba(0,0,0,0.3), 0 4px 6px -4px rgba(0,0,0,0.2)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        overflow: 'hidden',
-                    }}
-                >
-                    <div
-                        style={{
-                            padding: '12px',
-                            background: '#7ec834',
-                            color: 'white',
-                            fontWeight: 'bold',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                        }}
-                    >
+                <div className="chat-gate-modal">
+                    <div className="chat-gate-header">
                         <span>AI Assistant</span>
-
                         <button
                             onClick={() => setShowChat(false)}
-                            style={{
-                                background: 'transparent',
-                                border: 'none',
-                                color: 'white',
-                                fontSize: '18px',
-                                cursor: 'pointer',
-                                lineHeight: 1,
-                            }}
+                            className="chat-gate-close"
                             aria-label="Close Chat"
                         >
                             ✕
                         </button>
                     </div>
 
-                    <div style={{ padding: '20px', flex: 1 }}>
-                        <h3 style={{ marginBottom: '10px', color: 'black' }}>
-                            Enter your email to start chat
-                        </h3>
-
+                    <div className="chat-gate-body">
+                        <h3>Enter your email to start chat</h3>
                         <input
                             type="email"
                             placeholder="your@email.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            style={{
-                                width: '100%',
-                                padding: '10px',
-                                border: '1px solid #ccc',
-                                borderRadius: '6px',
-                                marginBottom: '10px',
-                            }}
+                            className="chat-gate-input"
                         />
-
-                        <button
-                            onClick={handleStartChat}
-                            style={{
-                                width: '100%',
-                                padding: '10px',
-                                backgroundColor: '#7ec834',
-                                color: 'white',
-                                border: 'none',
-                                borderRadius: '6px',
-                                cursor: 'pointer',
-                            }}
-                        >
+                        <button onClick={handleStartChat} className="chat-gate-submit">
                             Start Chat
                         </button>
                     </div>
                 </div>
             )}
             {showChat && isChatAllowed && (
-                <div className="fixed bottom-20 right-6 w-80 max-w-full z-50 shadow-lg">
+                <div className="chat-container-wrap">
                     <ChatContainer isOpen={showChat} setIsOpen={setShowChat} email={email} />
                 </div>
             )}

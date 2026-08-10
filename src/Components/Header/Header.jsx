@@ -1,26 +1,13 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Typical from 'react-typical';
-import LOGO from '../../Assets/enostation-logo.png';
+import { motion } from 'framer-motion';
+import LOGO from '../../Assets/enostation.jpeg';
 import CTA from './CTA';
+import ScrollReveal from '../common/ScrollReveal';
 import './header.css';
 import { FiCpu, FiGlobe } from 'react-icons/fi';
 
 const Header = () => {
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            disable: false,
-            startEvent: 'DOMContentLoaded',
-            offset: 120,
-            easing: 'ease',
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    }, []);
-
-
     const agencyStats = [
         { number: '50+', label: 'Delivered Projects' },
         { number: '99%', label: 'Client Satisfaction' },
@@ -32,90 +19,129 @@ const Header = () => {
 
     return (
         <header id="header" className="agency-hero-section">
+            <div className="hero-mesh-bg" aria-hidden="true" />
+            <div className="hero-grid-overlay" aria-hidden="true" />
+
             <div className="container agency-hero-container">
                 <div className="hero-content-wrapper">
-                    <div data-aos="fade-down" className="agency-badge">
-                        <span className="badge-dot"></span>
-                        <span>Full-Service Digital & AI Agency</span>
-                    </div>
+                    <ScrollReveal direction="down">
+                        <div className="agency-badge">
+                            <span className="badge-dot"></span>
+                            <span>Full-Service Digital & AI Agency</span>
+                        </div>
+                    </ScrollReveal>
 
-                    <h1 data-aos="fade-right" className="agency-hero-title">
-                        Building Next-Gen <br />
-                        <span className="gradient-text">Web, Mobile & AI Solutions</span>
-                    </h1>
+                    <ScrollReveal delay={0.1} direction="right">
+                        <h1 className="agency-hero-title">
+                            Building Next-Gen <br />
+                            <span className="gradient-text gradient-text--animated">Web, Mobile & AI Solutions</span>
+                        </h1>
+                    </ScrollReveal>
 
-                    <div data-aos="fade-up" className="agency-hero-sub">
-                        <Typical
-                            steps={[
-                                'Custom Web & SaaS Engineering',
-                                2500,
-                                'AI Automation & Custom LLMs',
-                                2500,
-                                'Mobile Application Development',
-                                2500,
-                                'Enterprise Cloud Architecture',
-                                2500,
-                            ]}
-                            loop={Infinity}
-                            wrapper="div"
-                            className="typical-wrapper"
-                        />
-                    </div>
+                    <ScrollReveal delay={0.2}>
+                        <div className="agency-hero-sub">
+                            <Typical
+                                steps={[
+                                    'Custom Web & SaaS Engineering',
+                                    2500,
+                                    'AI Automation & Custom LLMs',
+                                    2500,
+                                    'Mobile Application Development',
+                                    2500,
+                                    'Enterprise Cloud Architecture',
+                                    2500,
+                                ]}
+                                loop={Infinity}
+                                wrapper="div"
+                                className="typical-wrapper"
+                            />
+                        </div>
+                    </ScrollReveal>
 
-                    <p data-aos="fade-up" className="agency-hero-description">
-                        Enostation transforms ambitious ideas into scalable digital products. We partner with startups and enterprises to design, engineer, and deploy high-performance web applications and intelligent AI software.
-                    </p>
+                    <ScrollReveal delay={0.25}>
+                        <p className="agency-hero-description">
+                            Enostation transforms ambitious ideas into scalable digital products. We partner with startups and enterprises to design, engineer, and deploy high-performance web applications and intelligent AI software.
+                        </p>
+                    </ScrollReveal>
 
                     <CTA />
 
-                    {/* Tech Stack Pills */}
-                    <div data-aos="fade-up" className="hero-tech-pills">
-                        <span className="tech-pill-label">Core Technologies:</span>
-                        <div className="pills-list">
-                            {techPills.map((tech, idx) => (
-                                <span key={idx} className="tech-pill-item">{tech}</span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                <div data-aos="zoom-in" className="hero-visual-wrapper">
-                    <div className="visual-card-glass">
-                        <div className="visual-brand-circle">
-                            <img id="pic" src={LOGO} alt="Enostation Digital Agency" />
-                        </div>
-                        <div className="floating-badge badge-top-right">
-                            <FiCpu className="badge-icon" />
-                            <div>
-                                <strong style={{ display: 'block' }}>AI Driven</strong>
-                                <small style={{ color: 'var(--color-light)' }}>Automation Ready</small>
+                    <ScrollReveal delay={0.35}>
+                        <div className="hero-tech-pills">
+                            <span className="tech-pill-label">Core Technologies:</span>
+                            <div className="pills-list">
+                                {techPills.map((tech, idx) => (
+                                    <motion.span
+                                        key={tech}
+                                        className="tech-pill-item"
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.4 + idx * 0.05, duration: 0.4 }}
+                                    >
+                                        {tech}
+                                    </motion.span>
+                                ))}
                             </div>
                         </div>
-                        <div className="floating-badge badge-bottom-left">
-                            <FiGlobe className="badge-icon" />
-                            <div>
-                                <strong style={{ display: 'block' }}>Global Scale</strong>
-                                <small style={{ color: 'var(--color-light)' }}>Enterprise Grade</small>
+                    </ScrollReveal>
+                </div>
+
+                <ScrollReveal delay={0.15} direction="scale">
+                    <div className="hero-visual-wrapper">
+                        <div className="visual-card-glass">
+                            <div className="visual-glow-ring" aria-hidden="true" />
+                            <div className="visual-brand-circle">
+                                <img id="pic" src={LOGO} alt="Enostation Digital Agency" />
                             </div>
+                            <motion.div
+                                className="floating-badge badge-top-right"
+                                animate={{ y: [0, -8, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                            >
+                                <FiCpu className="badge-icon" />
+                                <div>
+                                    <strong>AI Driven</strong>
+                                    <small>Automation Ready</small>
+                                </div>
+                            </motion.div>
+                            <motion.div
+                                className="floating-badge badge-bottom-left"
+                                animate={{ y: [0, 8, 0] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                            >
+                                <FiGlobe className="badge-icon" />
+                                <div>
+                                    <strong>Global Scale</strong>
+                                    <small>Enterprise Grade</small>
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
-                </div>
+                </ScrollReveal>
             </div>
 
-            {/* Live Agency Metrics Banner */}
-            <div data-aos="fade-up" className="agency-stats-banner">
-                <div className="container stats-banner-grid">
-                    {agencyStats.map((stat, index) => (
-                        <div key={index} className="stat-banner-item">
-                            <h3 className="stat-banner-number">{stat.number}</h3>
-                            <p className="stat-banner-label">{stat.label}</p>
-                        </div>
-                    ))}
+            <ScrollReveal delay={0.2}>
+                <div className="agency-stats-banner">
+                    <div className="container stats-banner-grid">
+                        {agencyStats.map((stat, index) => (
+                            <motion.div
+                                key={stat.label}
+                                className="stat-banner-item"
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <h3 className="stat-banner-number">{stat.number}</h3>
+                                <p className="stat-banner-label">{stat.label}</p>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </ScrollReveal>
         </header>
     );
 };
 
 export default Header;
-

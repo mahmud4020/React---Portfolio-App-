@@ -1,39 +1,27 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FaFacebookSquare, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FiArrowRight, FiMail } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import LOGO from '../../Assets/enostation-logo.png';
+import LOGO from '../../Assets/enostation.jpeg';
+import ScrollReveal from '../common/ScrollReveal';
 import './footer.css';
 
 const Footer = () => {
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            disable: false,
-            startEvent: 'DOMContentLoaded',
-            offset: 120,
-            easing: 'ease',
-            mirror: false,
-            anchorPlacement: 'top-bottom',
-        });
-    }, []);
-
     return (
         <>
-            {/* CTA Banner */}
-            <section className="footer-cta-banner" data-aos="fade-up">
-                <div className="container footer-cta-inner">
-                    <div className="footer-cta-text">
-                        <h2>Ready to Build Something Extraordinary?</h2>
-                        <p>Let's turn your vision into a high-performing digital product. Schedule a free strategy call today.</p>
+            <ScrollReveal>
+                <section className="footer-cta-banner">
+                    <div className="container footer-cta-inner">
+                        <div className="footer-cta-text">
+                            <h2>Ready to Build Something Extraordinary?</h2>
+                            <p>Let's turn your vision into a high-performing digital product. Schedule a free strategy call today.</p>
+                        </div>
+                        <Link to="/contact" className="btn btn-primary footer-cta-btn">
+                            Start a Project <FiArrowRight />
+                        </Link>
                     </div>
-                    <Link to="/contact" className="btn btn-primary footer-cta-btn">
-                        Start a Project <FiArrowRight />
-                    </Link>
-                </div>
-            </section>
+                </section>
+            </ScrollReveal>
 
             <footer className="agency-footer">
                 <div className="container agency-footer-container">
@@ -87,7 +75,6 @@ const Footer = () => {
                             </a>
                         </div>
 
-                        {/* Newsletter */}
                         <div className="footer-newsletter">
                             <p className="newsletter-label">Stay Updated</p>
                             <div className="newsletter-input-wrap">

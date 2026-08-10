@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import SEO from '../common/SEO';
 import FAQ from '../common/FAQ';
 import Process from '../Process/Process';
+import ScrollReveal from '../common/ScrollReveal';
 import './Pricing.css';
 
 const DEFAULT_AGENCY_PLANS = [
@@ -76,47 +77,46 @@ const Pricing = () => {
                     url="https://enostation.netlify.app/pricing"
                 />
 
-                <h5 data-aos="fade-up">Transparent Investment</h5>
-                <h2 data-aos="fade-up" data-aos-delay="100">
-                    Agency Engagement Models
-                </h2>
+                <ScrollReveal>
+                    <h5>Transparent Investment</h5>
+                    <h2>Agency Engagement Models</h2>
+                </ScrollReveal>
 
                 <div className="container pricing__container">
                     {plans.map((plan, index) => (
-                        <article
-                            key={plan.name || index}
-                            data-aos="fade-up"
-                            data-aos-delay={index * 100}
-                            className={`pricing__card glass-card ${
-                                plan.featured ? 'pricing__card--featured' : ''
-                            }`}
-                        >
-                            {plan.featured && (
-                                <span className="pricing__badge">Most Popular Choice</span>
-                            )}
-                            <h3 className="pricing__name">{plan.name}</h3>
-                            <p className="pricing__desc">{plan.description}</p>
-
-                            <div className="pricing__price">
-                                {plan.price && <span className="pricing__amount">{plan.price}</span>}
-                                {plan.priceNote && (
-                                    <span className="pricing__note">{plan.priceNote}</span>
+                        <ScrollReveal key={plan.name || index} delay={index * 0.1}>
+                            <article
+                                className={`pricing__card glass-card ${
+                                    plan.featured ? 'pricing__card--featured' : ''
+                                }`}
+                            >
+                                {plan.featured && (
+                                    <span className="pricing__badge">Most Popular Choice</span>
                                 )}
-                            </div>
+                                <h3 className="pricing__name">{plan.name}</h3>
+                                <p className="pricing__desc">{plan.description}</p>
 
-                            <ul className="pricing__features">
-                                {plan.features.map((feature, idx) => (
-                                    <li key={idx}>
-                                        <FiCheck className="pricing__check" />
-                                        <span>{feature}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                                <div className="pricing__price">
+                                    {plan.price && <span className="pricing__amount">{plan.price}</span>}
+                                    {plan.priceNote && (
+                                        <span className="pricing__note">{plan.priceNote}</span>
+                                    )}
+                                </div>
 
-                            <Link to="/contact" className={`btn ${plan.featured ? 'btn-primary' : 'btn-outline'} pricing__cta`}>
-                                {plan.cta || 'Get Started'}
-                            </Link>
-                        </article>
+                                <ul className="pricing__features">
+                                    {plan.features.map((feature, idx) => (
+                                        <li key={idx}>
+                                            <FiCheck className="pricing__check" />
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <Link to="/contact" className={`btn ${plan.featured ? 'btn-primary' : 'btn-outline'} pricing__cta`}>
+                                    {plan.cta || 'Get Started'}
+                                </Link>
+                            </article>
+                        </ScrollReveal>
                     ))}
                 </div>
             </section>
@@ -128,4 +128,3 @@ const Pricing = () => {
 };
 
 export default Pricing;
-

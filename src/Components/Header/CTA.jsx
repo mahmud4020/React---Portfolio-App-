@@ -1,26 +1,19 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FiArrowRight, FiBriefcase } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import ScrollReveal from '../common/ScrollReveal';
 
 const CTA = () => {
-    useEffect(() => {
-        AOS.init({ duration: 400 });
-    }, []);
-
-
     return (
-        <div className="cta agency-cta">
-            <Link data-aos="fade-right" to="/contact" className="btn btn-primary">
+        <ScrollReveal delay={0.3} className="cta agency-cta">
+            <Link to="/contact" className="btn btn-primary">
                 Start a Project <FiArrowRight />
             </Link>
-            <Link data-aos="fade-left" to="/portfolio" className="btn btn-outline">
+            <Link to="/portfolio" className="btn btn-outline">
                 <FiBriefcase /> View Case Studies
             </Link>
-        </div>
+        </ScrollReveal>
     );
 };
 
 export default CTA;
-

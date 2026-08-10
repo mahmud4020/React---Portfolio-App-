@@ -149,6 +149,16 @@
     }
 }
 
+.portfolio__item {
+    height: 100%;
+}
+
+.portfolio-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-light);
+}
+
 @media screen and (max-width: 650px) {
     .portfolio__container {
         grid-template-columns: 1fr;

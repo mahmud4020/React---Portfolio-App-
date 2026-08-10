@@ -1,4 +1,6 @@
-/* ===== Agency Tech Stack Section ===== */
+.tech-card {
+  height: 100%;
+}
 
 /* Category Filter Tabs */
 .tech-category-tabs {

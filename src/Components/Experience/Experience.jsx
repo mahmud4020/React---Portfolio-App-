@@ -1,5 +1,3 @@
-import AOS from "aos";
-import "aos/dist/aos.css";
 import React, { useEffect, useState } from "react";
 import {
   SiReact, SiNextdotjs, SiTailwindcss, SiFirebase,
@@ -10,6 +8,7 @@ import {
 import { FaCss3, FaReact } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { GrMysql } from "react-icons/gr";
+import ScrollReveal from '../common/ScrollReveal';
 import "./experience.css";
 
 const CATEGORIES = [
@@ -48,17 +47,6 @@ const Experience = () => {
   const [animateBars, setAnimateBars] = useState(false);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      disable: false,
-      startEvent: "DOMContentLoaded",
-      offset: 120,
-      easing: "ease",
-      mirror: false,
-      anchorPlacement: "top-bottom",
-    });
-
-    // Trigger bar animations after mount
     const timer = setTimeout(() => setAnimateBars(true), 400);
     return () => clearTimeout(timer);
   }, []);
@@ -75,13 +63,15 @@ const Experience = () => {
     : TECH_STACK.filter(t => t.category === activeCategory);
 
   return (
-    <section id="experience">
-      <h5 data-aos="fade-up">Our Arsenal</h5>
-      <h2 data-aos="fade-up" data-aos-delay="100">Technologies We Master</h2>
+    <section id="experience" className="section--alt">
+      <ScrollReveal>
+        <h5>Our Arsenal</h5>
+        <h2>Technologies We Master</h2>
+      </ScrollReveal>
 
-      {/* Category Filter Tabs */}
       <div className="container">
-        <div className="tech-category-tabs" data-aos="fade-up" data-aos-delay="200">
+        <ScrollReveal delay={0.1}>
+          <div className="tech-category-tabs">
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
@@ -91,19 +81,17 @@ const Experience = () => {
               {cat.label}
             </button>
           ))}
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
 
-      {/* Tech Stack Grid */}
       <div className="container tech-stack-grid" id="responsive">
         {filteredTech.map((tech, index) => (
-          <div
-            key={tech.name}
-            className="tech-card glass-card"
-            data-aos="fade-up"
-            data-aos-delay={Math.min(index * 50, 300)}
-            style={{ "--tech-color": tech.color }}
-          >
+          <ScrollReveal key={tech.name} delay={Math.min(index * 0.05, 0.3)}>
+            <div
+              className="tech-card glass-card"
+              style={{ "--tech-color": tech.color }}
+            >
             <div className="tech-card-header">
               <div className="tech-icon-wrap">
                 {tech.icon}
@@ -124,7 +112,8 @@ const Experience = () => {
                 }}
               />
             </div>
-          </div>
+            </div>
+          </ScrollReveal>
         ))}
       </div>
     </section>

@@ -1,4 +1,17 @@
-/* Agency Services Grid Styling */
+.services__container > *,
+.process__container > *,
+.about__pillars_grid > *,
+.tech-stack-grid > *,
+.portfolio__container > *,
+.pricing__container > * {
+  height: 100%;
+}
+
+.brochure-cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
 .services__container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -14,6 +27,43 @@
   position: relative;
   overflow: hidden;
   transition: var(--transition);
+  height: 100%;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, rgba(126, 200, 52, 0.35), rgba(0, 210, 255, 0.2));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(126, 200, 52, 0.08), transparent 70%);
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.service-card:hover::after {
+  transform: scale(1.5);
 }
 
 .service-card-top {
@@ -21,6 +71,8 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .service-icon-wrapper {
@@ -34,6 +86,13 @@
   justify-content: center;
   font-size: 1.5rem;
   color: var(--color-primary);
+  transition: var(--transition);
+}
+
+.service-card:hover .service-icon-wrapper {
+  background: var(--color-primary);
+  color: #0b0f19;
+  box-shadow: 0 0 20px var(--color-primary-glow);
 }
 
 .service-badge-pill {
@@ -51,6 +110,8 @@
   font-weight: 700;
   color: var(--color-white);
   margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
 }
 
 .service-desc {
@@ -58,6 +119,8 @@
   color: var(--color-light);
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .service-features-list {
@@ -66,6 +129,8 @@
   gap: 0.6rem;
   margin-bottom: 2rem;
   padding: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .service-features-list li {
@@ -86,6 +151,8 @@
 .service-card-footer {
   padding-top: 1rem;
   border-top: 1px solid var(--color-border);
+  position: relative;
+  z-index: 1;
 }
 
 .service-cta-link {
@@ -115,4 +182,3 @@
     grid-template-columns: 1fr;
   }
 }
-

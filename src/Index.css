@@ -143,9 +143,59 @@ body::after {
 
 .container {
   width: var(--container-width-lg);
+  max-width: 100%;
+  min-width: 0;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+section > .scroll-reveal {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* Section headings are commonly wrapped by ScrollReveal. Keep the wrapper
+   aligned with the section instead of allowing the heading to escape it. */
+section > .scroll-reveal > h5 {
+  text-align: center;
+  color: var(--color-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+
+section > .scroll-reveal > h2 {
+  text-align: center;
+  color: var(--color-white);
+  margin-bottom: 3.5rem;
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+section > .scroll-reveal > h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  margin: 0.85rem auto 0;
+  border-radius: 2px;
+  animation: underlineShimmer 3s ease-in-out infinite;
 }
 
 h1, h2, h3, h4, h5, h6 {

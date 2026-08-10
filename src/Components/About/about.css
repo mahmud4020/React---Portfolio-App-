@@ -1,11 +1,48 @@
 /* Agency About Section Styling */
+.about__section_heading {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 1rem;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.about__section_heading h5,
+.about__section_heading h2 {
+    position: static;
+    left: auto;
+    transform: none;
+}
+
+.about__section_heading h2 {
+    display: inline-block;
+    max-width: 100%;
+}
+
 .about__container {
     display: grid;
-    grid-template-columns: 35% 58%;
+    grid-template-columns: minmax(0, 35%) minmax(0, 58%);
     gap: 7%;
     align-items: center;
     position: relative;
     z-index: 1;
+    min-width: 0;
+}
+
+.about__content,
+.about__intro_block,
+.about__pillars_grid,
+.pillar-card {
+    min-width: 0;
+}
+
+.about__content,
+.about__intro_block,
+.agency-about-heading,
+.intro-text,
+.pillar-card > div:last-child {
+    max-width: 100%;
+    overflow-wrap: anywhere;
 }
 
 .about__visual {

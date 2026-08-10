@@ -5,7 +5,7 @@
   padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
   overflow: hidden;
 }
@@ -228,6 +228,7 @@
 }
 
 .agency-stats-banner {
+  margin-top: 1rem;
   margin-top: 4rem;
   padding: 2.2rem 0;
   background: rgba(12, 18, 30, 0.6);

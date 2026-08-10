@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   SiReact, SiNextdotjs, SiTailwindcss, SiFirebase,
   SiLaravel, SiMongodb, SiExpress, SiPhp,
@@ -44,18 +44,9 @@ const TECH_STACK = [
 
 const Experience = () => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [animateBars, setAnimateBars] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setAnimateBars(true), 400);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleCategoryChange = (catId) => {
-    setAnimateBars(false);
     setActiveCategory(catId);
-    // Re-trigger animations after filter change
-    setTimeout(() => setAnimateBars(true), 100);
   };
 
   const filteredTech = activeCategory === "all"
@@ -100,17 +91,6 @@ const Experience = () => {
                 <h4 className="tech-name">{tech.name}</h4>
                 <span className="tech-category-label">{tech.category}</span>
               </div>
-              <span className="tech-percentage">{tech.proficiency}%</span>
-            </div>
-
-            <div className="tech-progress-track">
-              <div
-                className="tech-progress-fill"
-                style={{
-                  width: animateBars ? `${tech.proficiency}%` : "0%",
-                  background: `linear-gradient(90deg, var(--color-primary), ${tech.color})`,
-                }}
-              />
             </div>
             </div>
           </ScrollReveal>

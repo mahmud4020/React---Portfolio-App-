@@ -32,7 +32,7 @@ const About = () => {
 
     return (
         <section id="about" className="section--alt">
-            <ScrollReveal>
+            <ScrollReveal className="about__section_heading">
                 <h5>Why Choose Us</h5>
                 <h2>Partner With Enostation Agency</h2>
             </ScrollReveal>

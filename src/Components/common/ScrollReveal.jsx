@@ -23,7 +23,7 @@ const ScrollReveal = ({
 
     return (
         <Component
-            className={className}
+            className={`scroll-reveal ${className}`.trim()}
             initial={{ opacity: 0, ...offset }}
             whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.15, margin: '-40px' }}

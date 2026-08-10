@@ -6,6 +6,7 @@ import CTA from './CTA';
 import ScrollReveal from '../common/ScrollReveal';
 import './header.css';
 import { FiCpu, FiGlobe } from 'react-icons/fi';
+import FeaturedClients from '../FeaturedClients/FeaturedClients';
 
 const Header = () => {
     const agencyStats = [
@@ -120,6 +121,8 @@ const Header = () => {
                     </div>
                 </ScrollReveal>
             </div>
+
+            <FeaturedClients />
 
             <ScrollReveal delay={0.2}>
                 <div className="agency-stats-banner">

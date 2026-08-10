@@ -47,13 +47,16 @@
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  padding: 0.3rem 0.7rem;
-  background: var(--color-primary);
-  color: #0c1019;
+  padding: 0.4rem 0.9rem;
+  background: rgba(12, 16, 25, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-primary);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  border-radius: 4px;
+  border-radius: 6px;
   text-transform: uppercase;
   z-index: 2;
 }

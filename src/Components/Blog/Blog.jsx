@@ -22,7 +22,7 @@ const Blog = () => {
           .slice()
           .sort((a, b) => new Date(b.date) - new Date(a.date))
           .slice(0, 6)
-          .map(({ id, image, title, desc, author, date, tag, readTime }, index) => {
+          .map(({ id, image, title, desc, author, date, tag }, index) => {
             const truncatedDesc =
               desc.length > 120 ? desc.slice(0, 120) + "..." : desc;
             return (
@@ -53,7 +53,6 @@ const Blog = () => {
                     />
 
                     <div className="blog__footer">
-                      <span className="blog__read-time">{readTime}</span>
                       <Link to={`blog-details/${id}`} className="blog__read-more">
                         Read More <FiArrowRight />
                       </Link>

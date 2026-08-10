@@ -25,7 +25,7 @@ const SeeMoreBlogs = () => {
           {blogs
             .slice()
             .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .map(({ id, image, title, desc, author, date, tag, readTime }) => {
+            .map(({ id, image, title, desc, author, date, tag }) => {
               const truncatedDesc =
                 desc.length > 120 ? desc.slice(0, 120) + "..." : desc;
               return (
@@ -55,7 +55,6 @@ const SeeMoreBlogs = () => {
                     />
 
                     <div className="blog__footer">
-                      <span className="blog__read-time">{readTime}</span>
                       <Link to={`/blog-details/${id}`} className="blog__read-more">
                         Read More <FiArrowRight />
                       </Link>

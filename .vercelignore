@@ -1,0 +1,15 @@
+node_modules
+build
+.git
+.gitignore
+netlify
+netlify.toml
+public/netlify.toml
+public/_redirects
+README.md
+script.js
+deno.lock
+.kilo
+.env
+.env.local
+.env.*.local

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { CgProfile } from 'react-icons/cg';
-import { FaCalendarAlt } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { CgArrowLeft } from 'react-icons/cg';
+import { FaCalendarAlt, FaClock, FaTag } from 'react-icons/fa';
 import { HashLoader } from 'react-spinners';
 import { useTranslation } from 'react-i18next';
 import { allBlogs } from './BlogData';
@@ -34,12 +34,14 @@ const BlogDetails = () => {
             {item ? (
                 <>
                     {loading ? (
-                        <HashLoader
-                            color="#7EC834"
-                            loading={loading}
-                            className="override"
-                            size={100}
-                        />
+                        <div className="blog__loading">
+                            <HashLoader
+                                color="#7EC834"
+                                loading={loading}
+                                className="override"
+                                size={100}
+                            />
+                        </div>
                     ) : (
                         <>
                             <SEO
@@ -52,64 +54,88 @@ const BlogDetails = () => {
 
                             <section id="blog__view">
                                 <div className="container blog__container__details">
-                                    <div className="blog__sahed__wrapper__details">
-                                        <div
-                                            className="blog__img__wrapper"
-                                            style={{
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                overflow: 'hidden',
-                                            }}
-                                        >
+                                    <Link to="/blogs" className="blog__back-btn">
+                                        <CgArrowLeft />
+                                        <span>Back to Blogs</span>
+                                    </Link>
+
+                                    <div className="blog__hero">
+                                        <div className="blog__hero__image">
                                             {item.image ? (
                                                 <img
                                                     data-aos="zoom-in-up"
                                                     src={item.image}
                                                     alt={item.title}
-                                                    style={{
-                                                        width: '100%',
-                                                        height: 'auto',
-                                                        maxHeight: '400px',
-                                                        objectFit: 'contain',
-                                                    }}
                                                 />
                                             ) : item.video ? (
                                                 <div
                                                     data-aos="zoom-in-up"
                                                     dangerouslySetInnerHTML={{ __html: item.video }}
-                                                    style={{
-                                                        width: '100%',
-                                                        maxHeight: '400px',
-                                                        overflow: 'auto',
-                                                        display: 'flex',
-                                                        justifyContent: 'center',
-                                                        alignItems: 'center',
-                                                    }}
+                                                    className="blog__hero__video"
                                                 />
                                             ) : null}
+                                            <div className="blog__hero__overlay" />
+                                            {item.tag && (
+                                                <span className="blog__hero__tag">
+                                                    <FaTag />
+                                                    {item.tag}
+                                                </span>
+                                            )}
                                         </div>
                                     </div>
 
                                     <div className="blog__content">
-                                        <h5 className="blog__subtitle">{t('blog_details.subtitle')}</h5>
-                                        <h2 className="blog__title">{item.title}</h2>
+                                        <h2 className="blog__details__title">{item.title}</h2>
 
-                                        <div className="blog__cards">
-                                            <article data-aos="fade-right" className="blog__card">
-                                                <CgProfile className="blog__icon" />
-                                                <h5>{t('blog_details.author')}</h5>
-                                                <small>{item.author}</small>
-                                            </article>
+                                        <div className="blog__meta">
+                                            <div className="blog__meta__item">
+                                                <div className="blog__meta__avatar">
+                                                    <span>
+                                                        {item.author
+                                                            .split(" ")
+                                                            .map((word) => word[0])
+                                                            .slice(0, 2)
+                                                            .join("")
+                                                            .toUpperCase()}
+                                                    </span>
+                                                </div>
+                                                <div className="blog__meta__info">
+                                                    <small>{t('blog_details.author')}</small>
+                                                    <strong>{item.author}</strong>
+                                                </div>
+                                            </div>
 
-                                            <article data-aos="fade-left" className="blog__card">
-                                                <FaCalendarAlt className="blog__icon" />
-                                                <h5>{t('blog_details.publish_date')}</h5>
-                                                <small>{item.date}</small>
-                                            </article>
+                                            <div className="blog__meta__divider" />
+
+                                            <div className="blog__meta__item">
+                                                <div className="blog__meta__icon">
+                                                    <FaCalendarAlt />
+                                                </div>
+                                                <div className="blog__meta__info">
+                                                    <small>{t('blog_details.publish_date')}</small>
+                                                    <strong>{item.date}</strong>
+                                                </div>
+                                            </div>
+
+                                            {item.readTime && (
+                                                <>
+                                                    <div className="blog__meta__divider" />
+                                                    <div className="blog__meta__item">
+                                                        <div className="blog__meta__icon">
+                                                            <FaClock />
+                                                        </div>
+                                                        <div className="blog__meta__info">
+                                                            <small>Read Time</small>
+                                                            <strong>{item.readTime}</strong>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
 
-                                        <p dangerouslySetInnerHTML={{ __html: item.desc }}></p>
+                                        <div className="blog__article">
+                                            <p dangerouslySetInnerHTML={{ __html: item.desc }}></p>
+                                        </div>
                                     </div>
                                 </div>
                             </section>
@@ -117,7 +143,13 @@ const BlogDetails = () => {
                     )}
                 </>
             ) : (
-                <h1>{t('blog_details.not_found')}</h1>
+                <div className="blog__not-found">
+                    <h1>{t('blog_details.not_found')}</h1>
+                    <Link to="/blogs" className="blog__back-btn">
+                        <CgArrowLeft />
+                        <span>Back to Blogs</span>
+                    </Link>
+                </div>
             )}
         </>
     );

@@ -17,6 +17,8 @@
   padding: 1.8rem;
   position: relative;
   overflow: hidden;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
 }
 
 .contact-card-info::before {
@@ -52,6 +54,8 @@
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
 }
 
 .contact__option::before {
@@ -68,6 +72,12 @@
 
 .contact__option:hover::before {
   opacity: 1;
+}
+
+.contact__option:hover {
+  border-color: var(--color-border-glow);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(126, 200, 52, 0.08);
 }
 
 .contact__option__icon {
@@ -107,6 +117,12 @@
   gap: 8px;
 }
 
+.contact__option a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* Agency Form Styling */
 .agency-inquiry-form {
   padding: 2.5rem;
@@ -115,6 +131,13 @@
   gap: 1.4rem;
   position: relative;
   overflow: hidden;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  transition: var(--transition);
+}
+
+.agency-inquiry-form:hover {
+  border-color: var(--color-border-glow);
 }
 
 .agency-inquiry-form::before {
@@ -207,6 +230,15 @@
 
 .budget-pill.active::before {
   display: none;
+}
+
+.budget-pill:active {
+  transform: scale(0.97);
+}
+
+.budget-pill:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .form-grid-row {
@@ -303,5 +335,22 @@ textarea::placeholder {
   }
   .agency-inquiry-form {
     padding: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact__option,
+  .agency-inquiry-form,
+  .contact__option__icon,
+  .budget-pill,
+  .submit-inquiry-btn::after {
+    transition: none;
+  }
+  .contact__option:hover {
+    transform: none;
+  }
+  .submit-inquiry-btn:hover::after {
+    width: 0;
+    height: 0;
   }
 }

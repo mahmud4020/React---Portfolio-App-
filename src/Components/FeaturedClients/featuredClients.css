@@ -1,13 +1,13 @@
 .featured-clients {
     position: relative;
     padding: 1rem 0 0;
-    background: #0c1019;
+    background: var(--color-bg-variant);
     overflow: hidden;
 }
 
 .featured-clients__eyebrow {
     margin: 0 0 0.75rem;
-    color: #a3e635;
+    color: var(--color-primary);
     font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -20,19 +20,21 @@
 }
 
 .marquee-base {
-    background: #a3e635;
+    background: var(--color-primary);
     height: 72px;
     transform: rotate(1.5deg);
     transform-origin: center;
 }
 
 .marquee-band {
-    background: linear-gradient(90deg, #1a4a3e, #173b35);
-    color: #ffffff;
+    background: linear-gradient(90deg, var(--color-bg), var(--color-bg-variant));
+    color: var(--color-white);
     padding: 20px 0;
     position: relative;
     top: -72px;
     transform: rotate(-1.5deg);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .marquee-track {
@@ -56,17 +58,18 @@
 .client-logo {
     flex: 0 0 auto;
     white-space: nowrap;
-    font-family: Arial, sans-serif;
+    font-family: "Plus Jakarta Sans", "Poppins", sans-serif;
     font-size: clamp(1rem, 2vw, 1.6rem);
     font-weight: 700;
-    color: #ffffff;
+    color: var(--color-light);
     letter-spacing: -0.02em;
     opacity: 0.9;
-    transition: opacity 0.3s ease;
+    transition: var(--transition);
 }
 
 .client-logo:hover {
     opacity: 1;
+    color: var(--color-primary);
 }
 
 .client-logo--poplar {

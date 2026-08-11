@@ -129,6 +129,7 @@
   color: var(--color-primary);
   background: var(--color-primary-variant);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--color-primary-glow);
 }
 
 .hero-visual-wrapper {
@@ -151,6 +152,12 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  transition: var(--transition);
+}
+
+.visual-card-glass:hover {
+  border-color: var(--color-border-glow);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6), 0 0 40px var(--color-primary-glow);
 }
 
 .visual-glow-ring {
@@ -180,6 +187,12 @@
   box-shadow: 0 0 50px var(--color-primary-glow);
   position: relative;
   z-index: 1;
+  transition: var(--transition);
+}
+
+.visual-card-glass:hover .visual-brand-circle {
+  box-shadow: 0 0 70px var(--color-primary-glow);
+  transform: scale(1.02);
 }
 
 .visual-brand-circle img {
@@ -200,6 +213,13 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
   z-index: 2;
+  transition: var(--transition);
+}
+
+.floating-badge:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55), 0 0 20px var(--color-primary-glow);
 }
 
 .floating-badge strong {
@@ -220,15 +240,21 @@
 .badge-top-right {
   top: 24px;
   right: -24px;
+  animation: badgeFloat 5s ease-in-out infinite;
 }
 
 .badge-bottom-left {
   bottom: 32px;
   left: -24px;
+  animation: badgeFloat 6s ease-in-out infinite reverse;
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .agency-stats-banner {
-  margin-top: 1rem;
   margin-top: 4rem;
   padding: 2.2rem 0;
   background: rgba(12, 18, 30, 0.6);
@@ -257,6 +283,7 @@
 
 .stat-banner-item:hover {
   background: rgba(126, 200, 52, 0.05);
+  transform: translateY(-3px);
 }
 
 .stat-banner-number {
@@ -309,5 +336,15 @@
 
   .badge-bottom-left {
     left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mesh-bg,
+  .visual-glow-ring,
+  .floating-badge,
+  .badge-top-right,
+  .badge-bottom-left {
+    animation: none;
   }
 }

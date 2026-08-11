@@ -41,6 +41,12 @@
   object-fit: cover;
   border: 1px solid var(--color-border-glow);
   box-shadow: 0 0 12px var(--color-primary-glow);
+  transition: var(--transition);
+}
+
+.agency-logo-brand:hover .agency-logo-img {
+  transform: scale(1.05) rotate(-3deg);
+  box-shadow: 0 0 20px var(--color-primary-glow);
 }
 
 .agency-brand-text {
@@ -55,6 +61,11 @@
   letter-spacing: 1px;
   color: var(--color-white);
   line-height: 1.1;
+  transition: var(--transition);
+}
+
+.agency-logo-brand:hover .agency-name {
+  color: var(--color-primary);
 }
 
 .agency-tag {
@@ -106,10 +117,20 @@
   display: none;
 }
 
+.agency-desktop-nav a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .header-cta-btn {
   padding: 0.6rem 1.3rem;
   font-size: 0.88rem;
   border-radius: 9999px;
+}
+
+.header-cta-btn:active {
+  transform: translateY(0) scale(0.97);
 }
 
 /* Floating Bottom Quick Nav for Mobile */
@@ -141,10 +162,20 @@
   transition: var(--transition);
 }
 
+.agency-mobile-floating-nav a:hover {
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
 .agency-mobile-floating-nav a.active {
   background: var(--color-primary);
   color: #0b0f19;
   box-shadow: 0 0 12px var(--color-primary-glow);
+}
+
+.agency-mobile-floating-nav a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -168,3 +199,12 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .agency-header,
+  .agency-logo-img,
+  .agency-name,
+  .agency-desktop-nav a,
+  .agency-mobile-floating-nav a {
+    transition: none;
+  }
+}

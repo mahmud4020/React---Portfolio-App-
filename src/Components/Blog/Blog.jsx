@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiClock, FiCalendar } from 'react-icons/fi';
 import { allBlogs } from "./BlogData";
 import ScrollReveal from "../common/ScrollReveal";
 import "./blog.css";
@@ -9,6 +9,15 @@ import "./blog.css";
 const Blog = () => {
   const [blogs] = useState(allBlogs);
   const { t } = useTranslation();
+
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map((word) => word[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase();
+  };
 
   return (
     <section id="blog">
@@ -22,7 +31,7 @@ const Blog = () => {
           .slice()
           .sort((a, b) => new Date(b.date) - new Date(a.date))
           .slice(0, 6)
-          .map(({ id, image, title, desc, author, date, tag }, index) => {
+          .map(({ id, image, title, desc, author, date, tag, readTime }, index) => {
             const truncatedDesc =
               desc.length > 120 ? desc.slice(0, 120) + "..." : desc;
             return (
@@ -30,8 +39,13 @@ const Blog = () => {
                 <article className="blog__item">
                   <div className="blog__item__image">
                     <div className="blog__img__wrapper">
-                      {image && <img src={image} alt={title} />}
+                      {image && <img src={image} alt={title} loading="lazy" />}
+                      <div className="blog__img__overlay" />
                       {tag && <span className="blog__tag">{tag}</span>}
+                      <span className="blog__date-badge">
+                        <FiCalendar />
+                        {date}
+                      </span>
                     </div>
                   </div>
 
@@ -40,11 +54,14 @@ const Blog = () => {
 
                     <div className="blog__author-row">
                       <div className="blog__author-avatar">
-                        <span>S</span>
+                        <span>{getInitials(author)}</span>
                       </div>
                       <span className="blog__author">{author}</span>
                       <span className="blog__dot">·</span>
-                      <span className="blog__date">{date}</span>
+                      <span className="blog__read-time">
+                        <FiClock />
+                        {readTime}
+                      </span>
                     </div>
 
                     <p
@@ -54,7 +71,7 @@ const Blog = () => {
 
                     <div className="blog__footer">
                       <Link to={`blog-details/${id}`} className="blog__read-more">
-                        Read More <FiArrowRight />
+                        Read More <FiArrowRight className="blog__arrow-icon" />
                       </Link>
                     </div>
                   </div>

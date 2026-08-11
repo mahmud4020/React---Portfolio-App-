@@ -1,5 +1,6 @@
 #project__view {
     margin-top: 10vh;
+    position: relative;
 }
 
 .project__container {
@@ -25,10 +26,30 @@
     display: grid;
     place-items: center;
     height: 30%;
+    padding: 1rem;
+    transition: var(--transition);
+}
+
+.project__sahed__wrapper:hover {
+    box-shadow: 0 0 40px var(--color-primary-glow);
+}
+
+.project__img__wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: var(--color-bg-variant);
 }
 
 .project__img__wrapper img {
     height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project__sahed__wrapper:hover .project__img__wrapper img {
+    transform: scale(1.03);
 }
 
 .project__cards {
@@ -51,6 +72,8 @@
     background: transparent;
     border-color: var(--color-primary-variant);
     cursor: default;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .project__icon {
@@ -166,6 +189,7 @@
 
 .case-study__step:hover {
     transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(126, 200, 52, 0.08);
 }
 
 .case-study__step__number {
@@ -187,4 +211,20 @@
     color: var(--color-light);
     font-size: 0.9rem;
     line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project__sahed__wrapper,
+    .project__img__wrapper img,
+    .project__card,
+    .case-study__step {
+        transition: none;
+    }
+    .project__sahed__wrapper:hover .project__img__wrapper img {
+        transform: none;
+    }
+    .project__card:hover,
+    .case-study__step:hover {
+        transform: none;
+    }
 }

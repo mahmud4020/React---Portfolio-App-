@@ -74,10 +74,10 @@
 }
 
 .review-card:hover {
-    border-color: var(--color-primary-variant);
+    border-color: var(--color-primary-glow);
     background: var(--color-bg-variant);
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(126, 200, 52, 0.08);
 }
 
 .review-card__avatar {
@@ -161,6 +161,14 @@
     .review-marquee__track {
         animation: none;
     }
+    .review-card,
+    .review-card__avatar {
+        animation: none;
+        transition: none;
+    }
+    .review-card:hover {
+        transform: none;
+    }
 }
 
 /* Review Modal */
@@ -206,6 +214,12 @@
     color: var(--color-white);
 }
 
+.review-modal__close:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
 .review-modal__title {
     text-align: center;
     margin-bottom: 0.25rem;
@@ -241,6 +255,7 @@
 .review-modal form textarea:focus {
     border-color: var(--color-primary);
     outline: none;
+    box-shadow: 0 0 0 3px var(--color-primary-variant);
 }
 
 .review-modal form .form-error {
@@ -281,6 +296,12 @@
     line-height: 1;
 }
 
+.review-modal__star-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
 .review-modal__star {
     color: var(--color-light);
     transition: color 0.2s ease, transform 0.2s ease;
@@ -306,5 +327,12 @@
 
     .review-modal {
         padding: 2rem 1.25rem 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .review-modal,
+    .review-modal__overlay {
+        animation: none;
     }
 }

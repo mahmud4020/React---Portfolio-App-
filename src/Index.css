@@ -291,6 +291,12 @@ a:hover {
   color: var(--color-white);
 }
 
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 .btn {
   width: max-content;
   display: inline-flex;
@@ -317,6 +323,15 @@ a:hover {
   box-shadow: 0 10px 25px var(--color-primary-glow);
 }
 
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
 .btn-primary {
   background: linear-gradient(135deg, var(--color-primary), #63a825);
   color: #0b0f19;
@@ -330,6 +345,10 @@ a:hover {
   color: #000;
   transform: translateY(-3px);
   box-shadow: 0 14px 30px rgba(126, 200, 52, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .btn-outline {
@@ -570,5 +589,22 @@ img {
   box-shadow: 0 0 15px var(--color-primary-glow);
 }
 
-/*=========== Finished All Agency CSS ==============*/
+/* Global focus-visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*=========== Finished All Agency CSS ==============*/

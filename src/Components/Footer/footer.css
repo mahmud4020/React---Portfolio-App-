@@ -16,6 +16,12 @@
     gap: 2rem;
     position: relative;
     overflow: hidden;
+    transition: var(--transition);
+}
+
+.footer-cta-inner:hover {
+    border-color: rgba(126, 200, 52, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(126, 200, 52, 0.08);
 }
 
 .footer-cta-inner::before {
@@ -84,6 +90,12 @@
     height: 44px;
     border-radius: 10px;
     border: 1px solid var(--color-border-glow);
+    transition: var(--transition);
+}
+
+.agency-footer-logo:hover img {
+    transform: scale(1.05) rotate(-3deg);
+    box-shadow: 0 0 15px var(--color-primary-glow);
 }
 
 .agency-footer-title {
@@ -120,6 +132,20 @@
     color: var(--color-white);
     margin-bottom: 1.2rem;
     position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-links-col h4::after,
+.footer-services-col h4::after,
+.footer-social-col h4::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 2px;
 }
 
 .agency-footer .permalinks {
@@ -142,6 +168,12 @@
 .agency-footer .permalinks a:hover {
     color: var(--color-primary);
     padding-left: 6px;
+}
+
+.agency-footer .permalinks a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 /* Social Icons */
@@ -191,6 +223,15 @@
     color: var(--color-primary);
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(126, 200, 52, 0.2);
+}
+
+.agency-footer .footer__socials a:active {
+    transform: translateY(-1px) scale(0.95);
+}
+
+.agency-footer .footer__socials a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 /* Newsletter */
@@ -266,6 +307,10 @@
     box-shadow: 0 0 12px var(--color-primary-glow);
 }
 
+.newsletter-btn:active {
+    transform: scale(0.95);
+}
+
 /* Copyright */
 .footer__copyright {
     border-top: 1px solid var(--color-border);
@@ -320,5 +365,14 @@
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-cta-inner,
+    .agency-footer-logo img,
+    .agency-footer .footer__socials a,
+    .newsletter-btn {
+        transition: none;
     }
 }

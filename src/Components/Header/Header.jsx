@@ -1,5 +1,5 @@
 import React from 'react';
-import Typical from 'react-typical';
+import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 import LOGO from '../../Assets/enostation.jpeg';
 import CTA from './CTA';
@@ -41,8 +41,8 @@ const Header = () => {
 
                     <ScrollReveal delay={0.2}>
                         <div className="agency-hero-sub">
-                            <Typical
-                                steps={[
+                            <TypeAnimation
+                                sequence={[
                                     'Custom Web & SaaS Engineering',
                                     2500,
                                     'AI Automation & Custom LLMs',
@@ -52,7 +52,7 @@ const Header = () => {
                                     'Enterprise Cloud Architecture',
                                     2500,
                                 ]}
-                                loop={Infinity}
+                                repeat={Infinity}
                                 wrapper="div"
                                 className="typical-wrapper"
                             />

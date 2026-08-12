@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   SiReact, SiNextdotjs, SiTailwindcss, SiFirebase,
   SiLaravel, SiMongodb, SiExpress, SiPhp,
@@ -44,9 +44,12 @@ const TECH_STACK = [
 
 const Experience = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const tabsTrackRef = useRef(null);
 
   const handleCategoryChange = (catId) => {
     setActiveCategory(catId);
+    const selectedTab = tabsTrackRef.current?.querySelector(`[data-category="${catId}"]`);
+    selectedTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
   };
 
   const filteredTech = activeCategory === "all"
@@ -63,15 +66,18 @@ const Experience = () => {
       <div className="container">
         <ScrollReveal delay={0.1}>
           <div className="tech-category-tabs">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              className={`tech-category-tab ${activeCategory === cat.id ? "active" : ""}`}
-              onClick={() => handleCategoryChange(cat.id)}
-            >
-              {cat.label}
-            </button>
-          ))}
+            <div className="tech-category-tabs-track" ref={tabsTrackRef}>
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat.id}
+                  data-category={cat.id}
+                  className={`tech-category-tab ${activeCategory === cat.id ? "active" : ""}`}
+                  onClick={() => handleCategoryChange(cat.id)}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
       </div>

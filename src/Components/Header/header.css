@@ -30,7 +30,46 @@
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  overflow: hidden;
   pointer-events: none;
+}
+
+.hero-grid-overlay::after {
+  content: "";
+  position: absolute;
+  inset: -600px; /* was -80%; -600px = -10 tiles, keeps grids aligned */
+  background-image:
+    linear-gradient(rgba(126, 200, 52, 0.9) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 210, 255, 0.85) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: 0 0;
+  mask-image: radial-gradient(ellipse 32% 45% at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.18) 22%, #000 44%, #000 58%, rgba(0, 0, 0, 0.18) 78%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 32% 45% at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.18) 22%, #000 44%, #000 58%, rgba(0, 0, 0, 0.18) 78%, transparent 100%);
+  mask-size: 200% 200%;
+  -webkit-mask-size: 200% 200%;
+  mask-position: 110% 110%;
+  -webkit-mask-position: 110% 110%;
+  animation: gridColorSweep 6s ease-in-out infinite;
+  will-change: mask-position, -webkit-mask-position;
+}
+
+@keyframes gridColorSweep {
+  0%, 6% {
+    opacity: 0;
+    mask-position: 110% 110%;
+    -webkit-mask-position: 110% 110%;
+  }
+  16% { opacity: 1; }
+  50% {
+    opacity: 0.85;
+    mask-position: 50% 50%;
+    -webkit-mask-position: 50% 50%;
+  }
+  74%, 100% {
+    opacity: 0;
+    mask-position: -10% -10%;
+    -webkit-mask-position: -10% -10%;
+  }
 }
 
 @keyframes meshPulse {
@@ -368,6 +407,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-mesh-bg,
+  .hero-grid-overlay::after,
   .visual-card-glass,
   .visual-brand-circle,
   .visual-glow-ring,

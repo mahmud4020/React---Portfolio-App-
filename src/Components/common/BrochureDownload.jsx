@@ -49,8 +49,8 @@ const BrochureDownload = ({ label = 'Download Service Brochure' }) => {
 
                 // ===== Contact =====
                 addSection('Contact & Profiles', [
-                    'Email: ssahed65@gmail.com',
-                    'WhatsApp: +8801616516753',
+                    'Email: hello.enostation@gmail.com',
+                    'WhatsApp: +8809638616438',
                     'Facebook: facebook.com/sahedstar',
                     'LinkedIn: linkedin.com/in/sahedstar',
                     'GitHub: github.com/sahedalways',

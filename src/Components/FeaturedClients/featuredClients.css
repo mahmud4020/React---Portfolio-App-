@@ -1,7 +1,7 @@
 .featured-clients {
     position: relative;
     padding: 1rem 0 0;
-    background: var(--color-bg-variant);
+    /*background: var(--color-bg-variant);*/
     overflow: hidden;
 }
 
@@ -43,7 +43,7 @@
     animation: featured-client-scroll 30s linear infinite;
 }
 
-.featured-clients:hover .marquee-track {
+.marquee-band:hover .marquee-track {
     animation-play-state: paused;
 }
 
@@ -59,7 +59,7 @@
     flex: 0 0 auto;
     white-space: nowrap;
     font-family: "Plus Jakarta Sans", "Poppins", sans-serif;
-    font-size: clamp(1rem, 2vw, 1.6rem);
+    font-size: clamp(0.9rem, 1.6vw, 1.3rem);
     font-weight: 700;
     color: var(--color-light);
     letter-spacing: -0.02em;
@@ -73,7 +73,7 @@
 }
 
 .client-logo--poplar {
-    font-size: clamp(1.3rem, 2.6vw, 2.1rem);
+    font-size: clamp(1.15rem, 2.1vw, 1.7rem);
     letter-spacing: 0.02em;
     font-weight: 800;
 }
@@ -94,25 +94,25 @@
 }
 
 .client-logo--global {
-    font-size: clamp(0.8rem, 1.6vw, 1.2rem);
+    font-size: clamp(0.75rem, 1.3vw, 1rem);
     letter-spacing: 0.08em;
     font-weight: 600;
 }
 
 .client-logo--blackstone {
-    font-size: clamp(0.9rem, 1.8vw, 1.35rem);
+    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
     letter-spacing: 0.04em;
 }
 
 .client-logo--supercharged {
-    font-size: clamp(0.75rem, 1.5vw, 1.1rem);
+    font-size: clamp(0.7rem, 1.2vw, 0.95rem);
     letter-spacing: 0.06em;
     font-weight: 600;
     text-transform: uppercase;
 }
 
 .client-logo--savvy {
-    font-size: clamp(1rem, 2vw, 1.55rem);
+    font-size: clamp(0.9rem, 1.6vw, 1.25rem);
     font-weight: 400;
     letter-spacing: 0.01em;
 }

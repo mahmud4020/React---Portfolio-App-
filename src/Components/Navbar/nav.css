@@ -123,9 +123,9 @@
   border-radius: 4px;
 }
 
-.header-cta-btn {
-  padding: 0.6rem 1.3rem;
-  font-size: 0.88rem;
+.agency-header .header-cta-btn.btn {
+  padding: 0.42rem 0.8rem;
+  font-size: 0.74rem;
   border-radius: 9999px;
 }
 
@@ -187,7 +187,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   .agency-desktop-nav {
     display: none;
   }

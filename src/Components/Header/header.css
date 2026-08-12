@@ -2,7 +2,7 @@
 .agency-hero-section {
   min-height: 100vh;
   padding-top: 8rem;
-  padding-bottom: 4rem;
+  /*padding-bottom: 4rem;*/
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -94,7 +94,7 @@
   gap: 1rem;
   flex-wrap: wrap;
   padding-top: 1.2rem;
-  border-top: 1px solid var(--color-border);
+  /*border-top: 1px solid var(--color-border);*/
   width: 100%;
 }
 
@@ -152,12 +152,25 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  transition: var(--transition);
+  animation: visualCardShowcase 10s ease-in-out infinite;
 }
 
-.visual-card-glass:hover {
-  border-color: var(--color-border-glow);
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6), 0 0 40px var(--color-primary-glow);
+@keyframes visualCardShowcase {
+  0%, 8%, 100% {
+    border-color: var(--color-border);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+    transform: translateY(0);
+  }
+  12%, 70% {
+    border-color: var(--color-border-glow);
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6), 0 0 40px var(--color-primary-glow);
+    transform: translateY(0);
+  }
+  80%, 90% {
+    border-color: var(--color-border-glow);
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6), 0 0 40px var(--color-primary-glow);
+    transform: translateY(18px);
+  }
 }
 
 .visual-glow-ring {
@@ -187,12 +200,12 @@
   box-shadow: 0 0 50px var(--color-primary-glow);
   position: relative;
   z-index: 1;
-  transition: var(--transition);
+  animation: brandCircleShowcase 10s ease-in-out infinite;
 }
 
-.visual-card-glass:hover .visual-brand-circle {
-  box-shadow: 0 0 70px var(--color-primary-glow);
-  transform: scale(1.02);
+@keyframes brandCircleShowcase {
+  0%, 8%, 100% { box-shadow: 0 0 50px var(--color-primary-glow); transform: scale(1); }
+  12%, 90% { box-shadow: 0 0 70px var(--color-primary-glow); transform: scale(1.02); }
 }
 
 .visual-brand-circle img {
@@ -213,13 +226,6 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
   z-index: 2;
-  transition: var(--transition);
-}
-
-.floating-badge:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55), 0 0 20px var(--color-primary-glow);
 }
 
 .floating-badge strong {
@@ -240,22 +246,43 @@
 .badge-top-right {
   top: 24px;
   right: -24px;
-  animation: badgeFloat 5s ease-in-out infinite;
+  animation: topBadgeShowcase 10s ease-in-out infinite;
 }
 
 .badge-bottom-left {
   bottom: 32px;
   left: -24px;
-  animation: badgeFloat 6s ease-in-out infinite reverse;
+  animation: bottomBadgeShowcase 10s ease-in-out infinite;
 }
 
-@keyframes badgeFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+@keyframes topBadgeShowcase {
+  0%, 30%, 100% {
+    border-color: var(--color-border-glow);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+  }
+  35%, 90% {
+    border-color: var(--color-primary);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55), 0 0 20px var(--color-primary-glow);
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes bottomBadgeShowcase {
+  0%, 50%, 100% {
+    border-color: var(--color-border-glow);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+  }
+  55%, 90% {
+    border-color: var(--color-primary);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55), 0 0 20px var(--color-primary-glow);
+    transform: translateY(-3px);
+  }
 }
 
 .agency-stats-banner {
-  margin-top: 4rem;
+  /*margin-top: 4rem;*/
   padding: 2.2rem 0;
   background: rgba(12, 18, 30, 0.6);
   border-top: 1px solid var(--color-border);
@@ -281,10 +308,10 @@
   transition: var(--transition);
 }
 
-.stat-banner-item:hover {
+/*.stat-banner-item:hover {
   background: rgba(126, 200, 52, 0.05);
   transform: translateY(-3px);
-}
+}*/
 
 .stat-banner-number {
   font-size: 2.5rem;
@@ -341,6 +368,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-mesh-bg,
+  .visual-card-glass,
+  .visual-brand-circle,
   .visual-glow-ring,
   .floating-badge,
   .badge-top-right,

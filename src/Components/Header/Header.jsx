@@ -95,28 +95,24 @@ const Header = () => {
                             <div className="visual-brand-circle">
                                 <img id="pic" src={LOGO} alt="Enostation Digital Agency" />
                             </div>
-                            <motion.div
+                            <div
                                 className="floating-badge badge-top-right"
-                                animate={{ y: [0, -8, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                             >
                                 <FiCpu className="badge-icon" />
                                 <div>
                                     <strong>AI Driven</strong>
                                     <small>Automation Ready</small>
                                 </div>
-                            </motion.div>
-                            <motion.div
+                            </div>
+                            <div
                                 className="floating-badge badge-bottom-left"
-                                animate={{ y: [0, 8, 0] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                             >
                                 <FiGlobe className="badge-icon" />
                                 <div>
                                     <strong>Global Scale</strong>
                                     <small>Enterprise Grade</small>
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
                 </ScrollReveal>

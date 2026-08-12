@@ -17,8 +17,8 @@ const Home = () => {
     "description":
       "Web development agency specializing in modern web applications, mobile apps, and AI-powered solutions.",
     "url": "https://enostation.netlify.app",
-    "email": "mailto:ssahed65@gmail.com",
-    "telephone": "+8801616516753",
+    "email": "mailto:hello.enostation@gmail.com",
+    "telephone": "+8809638616438",
     "sameAs": [
       "https://github.com/sahedalways",
       "https://www.linkedin.com/in/sahedstar/",

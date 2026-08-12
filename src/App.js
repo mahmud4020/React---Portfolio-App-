@@ -12,17 +12,20 @@ import Pricing from './Components/Pricing/Pricing';
 import Home from './Components/Screens/Home/Home';
 import NotFound from './Components/Screens/NotFound/NotFound';
 import ProjectDetails from './Components/Screens/Project_Details/ProjectDetails';
+import PrivacyPolicy from './Components/Screens/PrivacyPolicy/PrivacyPolicy';
+import RefundPolicy from './Components/Screens/RefundPolicy/RefundPolicy';
 import SeeMore from './Components/Screens/See_More/SeeMore';
 import SeeMoreBlogs from './Components/Screens/See_More_Blogs/SeeMoreBlogs';
 import Services from './Components/Services/Services';
 import Testimonial from './Components/Testimonial/Testimonial';
+import TermsConditions from './Components/Screens/TermsConditions/TermsConditions';
 
 import BackToTop from './Components/common/BackToTop';
 import ChatLauncher from './Components/common/ChatLauncher';
 import ChatContainer from './Components/common/ChatContainer';
 import Page from './Components/common/Page';
 import ScrollProgress from './Components/common/ScrollProgress';
-import TranslationLauncher from './Components/common/TranslationLauncher';
+import ScrollToTop from './Components/common/ScrollToTop';
 import useScrollAnimation from './hooks/useScrollAnimation';
 
 const AppRoutes = () => {
@@ -80,6 +83,42 @@ const AppRoutes = () => {
                 }
             />
             <Route path="/pricing" element={<Pricing />} />
+            <Route
+                path="/privacy-policy"
+                element={
+                    <Page
+                        title="Privacy Policy"
+                        description="Read Enostation's privacy policy and learn how we collect, use, and protect personal information."
+                        url="https://enostation.netlify.app/privacy-policy"
+                    >
+                        <PrivacyPolicy />
+                    </Page>
+                }
+            />
+            <Route
+                path="/refund-policy"
+                element={
+                    <Page
+                        title="Refund Policy"
+                        description="Review Enostation's refund policy for project deposits, milestone payments, and refund requests."
+                        url="https://enostation.netlify.app/refund-policy"
+                    >
+                        <RefundPolicy />
+                    </Page>
+                }
+            />
+            <Route
+                path="/terms-and-conditions"
+                element={
+                    <Page
+                        title="Terms & Conditions"
+                        description="Review the terms and conditions for using Enostation's website and services."
+                        url="https://enostation.netlify.app/terms-and-conditions"
+                    >
+                        <TermsConditions />
+                    </Page>
+                }
+            />
             <Route
                 path="/testimonial"
                 element={
@@ -143,13 +182,13 @@ const App = () => {
 
     return (
         <>
-            <TranslationLauncher />
             <ScrollProgress />
             <BackToTop />
 
             <ChatLauncher onClick={handleOpenChat} />
 
             <Router>
+                <ScrollToTop />
                 <div className="app-shell">
                     <Navbar />
                     <AppRoutes />

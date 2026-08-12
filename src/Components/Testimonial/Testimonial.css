@@ -28,7 +28,7 @@
 }
 
 .review-marquee__row {
-    overflow: hidden;
+    overflow: visible;
     width: 100%;
 }
 

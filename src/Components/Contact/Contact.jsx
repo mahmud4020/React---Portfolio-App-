@@ -114,16 +114,16 @@ const Contact = () => {
                     <article className="contact__option glass-card">
                         <AiOutlineMail className="contact__option__icon" />
                         <h4>Email Us</h4>
-                        <h5>ssahed65@gmail.com</h5>
-                        <a href="mailto:ssahed65@gmail.com">Send Direct Email</a>
+                        <h5>hello.enostation@gmail.com</h5>
+                        <a href="mailto:hello.enostation@gmail.com">Send Direct Email</a>
                     </article>
 
                     <article className="contact__option glass-card">
                         <BsWhatsapp className="contact__option__icon" />
                         <h4>WhatsApp Inquiry</h4>
-                        <h5>+880 1616-516753</h5>
+                        <h5>+880 9638-616438</h5>
                         <a
-                            href="https://api.whatsapp.com/send?phone=8801616516753"
+                            href="https://api.whatsapp.com/send?phone=8809638616438"
                             rel="noreferrer"
                             target="_blank"
                         >

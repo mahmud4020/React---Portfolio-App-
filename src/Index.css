@@ -35,7 +35,7 @@
   --radius-sm: 10px;
   --radius-md: 18px;
   --radius-lg: 28px;
-  --section-gap: 8rem;
+  --section-gap: 6rem;
 }
 
 :root[data-theme="light"] {
@@ -522,12 +522,16 @@ img {
 
 /* Media Queries for MEDIUM DEVICES */
 @media screen and (max-width: 1024px) {
+  :root {
+    --section-gap: 5rem;
+  }
+
   .container {
     width: var(--container-width-md);
   }
 
   section {
-    margin-top: 6rem;
+    margin-top: var(--section-gap);
   }
 
   h1 {
@@ -541,12 +545,16 @@ img {
 
 /* Media Queries for SMALL DEVICES */
 @media screen and (max-width: 600px) {
+  :root {
+    --section-gap: 4rem;
+  }
+
   .container {
     width: var(--container-width-sm);
   }
 
   section {
-    margin-top: 4.5rem;
+    margin-top: var(--section-gap);
   }
 
   section > h2 {

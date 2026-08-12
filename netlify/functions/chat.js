@@ -13,8 +13,8 @@ Contact & Profiles:
 - Facebook: https://facebook.com/sahedstar
 - LinkedIn: https://www.linkedin.com/in/sahedstar/
 - GitHub: https://github.com/sahedalways
-- WhatsApp: +8801616516753
-- Email: ssahed65@gmail.com
+- WhatsApp: +8809638616438
+- Email: hello.enostation@gmail.com
 
 Technical Expertise:
 - JavaScript

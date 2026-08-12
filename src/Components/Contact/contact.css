@@ -1,6 +1,6 @@
 /* ===== Agency Contact & Project Inquiry Styling ===== */
 .container.contact__container {
-  width: var(--container-width-lg);
+  /*width: var(--container-width-lg);*/
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   gap: 3rem;

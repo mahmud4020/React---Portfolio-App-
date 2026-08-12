@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './Testimonial.css';
 import TestimonialsData from './TestimonialsData';
 import ReviewModal from './ReviewModal';
@@ -24,12 +24,45 @@ const ReviewCard = ({ name, company, avatar, review }) => (
 
 const ReviewRow = ({ reviews, direction }) => {
     const duplicated = [...reviews, ...reviews];
+    const rowRef = useRef(null);
+    const cardsRef = useRef(null);
+    const offsetRef = useRef(0);
+    const dragRef = useRef({ active: false, lastX: 0 });
+
+    const onPointerDown = (e) => {
+        dragRef.current = { active: true, lastX: e.clientX };
+        rowRef.current.classList.add('is-dragging');
+        e.currentTarget.setPointerCapture(e.pointerId);
+    };
+
+    const onPointerMove = (e) => {
+        const drag = dragRef.current;
+        if (!drag.active) return;
+        offsetRef.current += e.clientX - drag.lastX;
+        drag.lastX = e.clientX;
+        cardsRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+    };
+
+    const onPointerUp = () => {
+        if (!dragRef.current.active) return;
+        dragRef.current.active = false;
+        rowRef.current.classList.remove('is-dragging');
+    };
+
     return (
-        <div className={`review-marquee__row review-marquee__row--${direction}`}>
-            <div className="review-marquee__track">
-                {duplicated.map((review, i) => (
-                    <ReviewCard key={`${review.id}-${i}`} {...review} />
-                ))}
+        <div className={`review-marquee__row review-marquee__row--${direction}`} ref={rowRef}>
+            <div
+                className="review-marquee__track"
+                onPointerDown={onPointerDown}
+                onPointerMove={onPointerMove}
+                onPointerUp={onPointerUp}
+                onPointerCancel={onPointerUp}
+            >
+                <div className="review-marquee__cards" ref={cardsRef}>
+                    {duplicated.map((review, i) => (
+                        <ReviewCard key={`${review.id}-${i}`} {...review} />
+                    ))}
+                </div>
             </div>
         </div>
     );

@@ -24,6 +24,7 @@ const Blog = () => {
       <ScrollReveal>
         <h5>{t('blog.subtitle')}</h5>
         <h2>{t('blog.title')}</h2>
+        <p className="section-subtitle">Insights, tutorials, and updates from our development team.</p>
       </ScrollReveal>
 
       <div className="container blog__container">

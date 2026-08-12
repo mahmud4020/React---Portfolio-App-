@@ -38,6 +38,7 @@ const Portfolio = () => {
             <ScrollReveal>
                 <h5>Case Studies & Client Work</h5>
                 <h2>Featured Client Projects</h2>
+                <p className="section-subtitle">Real results from real projects — see what we've built for businesses like yours.</p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>

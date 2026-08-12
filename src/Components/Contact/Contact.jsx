@@ -102,6 +102,7 @@ const Contact = () => {
             <ScrollReveal>
                 <h5>Let's Build Something Great</h5>
                 <h2>Start Your Agency Project</h2>
+                <p className="section-subtitle">Get in touch to discuss your project — we typically respond within 24 hours.</p>
             </ScrollReveal>
 
             <div className="container contact__container">

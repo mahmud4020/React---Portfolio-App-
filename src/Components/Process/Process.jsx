@@ -5,11 +5,11 @@ import ScrollReveal from '../common/ScrollReveal';
 import './Process.css';
 
 const DEFAULT_AGENCY_STEPS = [
-    { title: '01. Discovery & Strategy', description: 'Deep dive into project scope, user personas, technical requirements, and strategic roadmap.' },
-    { title: '02. UI/UX & System Design', description: 'Wireframing, interactive Figma prototypes, database schemas, and API architecture.' },
-    { title: '03. Agile Engineering', description: 'High-speed development in 1-2 week sprints with continuous code reviews & live staging.' },
-    { title: '04. QA & Performance Testing', description: 'Automated test coverage, security vulnerability scans, and multi-device usability audits.' },
-    { title: '05. Launch & Continuous Scale', description: 'Production deployment, cloud server setup, monitoring alerts, and ongoing feature updates.' }
+    { label: 'Stage 01', title: 'Discovery', description: 'We analyze your requirements, goals, and budget to plan the right solution.' },
+    { label: 'Stage 02', title: 'Design', description: 'Wireframes and UI/UX design so you can see the product before development.' },
+    { label: 'Stage 03', title: 'Development', description: 'Milestone-based coding with regular progress updates and transparency.' },
+    { label: 'Stage 04', title: 'Testing & QA', description: 'Thorough testing for bugs, performance, and cross-device compatibility.' },
+    { label: 'Stage 05', title: 'Delivery & Support', description: 'Deployment, handover with documentation, and ongoing support.' }
 ];
 
 const ICONS = [FiClipboard, FiLayout, FiCode, FiCheckCircle, FiTruck];
@@ -24,6 +24,7 @@ const Process = () => {
             <ScrollReveal>
                 <h5>How We Build</h5>
                 <h2>Our 5-Step Agency Workflow</h2>
+                <p className="section-subtitle">Every project moves through the same build track — no skipped steps, no guesswork.</p>
             </ScrollReveal>
 
             <div className="container process__container">
@@ -31,11 +32,12 @@ const Process = () => {
                     const Icon = ICONS[index % ICONS.length];
                     return (
                         <ScrollReveal key={step.title} delay={index * 0.1}>
-                            <article className="process__step glass-card">
-                                <span className="process__step__number">0{index + 1}</span>
-                                <div className="process__step__icon">
+                            <article className="process__step">
+                                <span className="process__ghost-num">0{index + 1}</span>
+                                <div className="process__icon">
                                     <Icon />
                                 </div>
+                                <div className="process__step-label">{step.label || `Stage 0${index + 1}`}</div>
                                 <h3>{step.title}</h3>
                                 <p>{step.description}</p>
                             </article>

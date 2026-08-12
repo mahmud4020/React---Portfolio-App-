@@ -95,6 +95,7 @@ const Services = () => {
         <ScrollReveal>
           <h5>Our Capabilities</h5>
           <h2>Digital Solutions & Services</h2>
+          <p className="section-subtitle">End-to-end development services tailored to your business goals and technical needs.</p>
         </ScrollReveal>
 
         <div className="container services__container">

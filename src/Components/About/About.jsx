@@ -35,6 +35,7 @@ const About = () => {
             <ScrollReveal className="about__section_heading">
                 <h5>Why Choose Us</h5>
                 <h2>Partner With Enostation Agency</h2>
+                <p className="section-subtitle">A dedicated team focused on delivering measurable results for your business.</p>
             </ScrollReveal>
 
             <div className="container about__container">

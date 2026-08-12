@@ -167,35 +167,48 @@ section > .scroll-reveal {
 /* Section headings are commonly wrapped by ScrollReveal. Keep the wrapper
    aligned with the section instead of allowing the heading to escape it. */
 section > .scroll-reveal > h5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
   text-align: center;
   color: var(--color-primary);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
-  margin-bottom: 0.6rem;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
   position: relative;
+}
+
+section > .scroll-reveal > h5::before,
+section > .scroll-reveal > h5::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-primary));
+}
+
+section > .scroll-reveal > h5::after {
+  background: linear-gradient(90deg, var(--color-primary), transparent);
 }
 
 section > .scroll-reveal > h2 {
   text-align: center;
   color: var(--color-white);
-  margin-bottom: 3.5rem;
+  margin-bottom: 1rem;
   position: relative;
-  display: inline-block;
+  display: block;
   max-width: 100%;
   overflow-wrap: anywhere;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 section > .scroll-reveal > h2::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  margin: 0.85rem auto 0;
-  border-radius: 2px;
-  animation: underlineShimmer 3s ease-in-out infinite;
+  display: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -221,47 +234,50 @@ section {
 .section--alt {
   padding: 4rem 0;
   margin-top: var(--section-gap);
-  background: linear-gradient(180deg, transparent, rgba(126, 200, 52, 0.03) 50%, transparent);
-}
-
-.section--alt::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(0, 210, 255, 0.04), transparent 70%);
-  pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at 50% -10%, rgba(143, 215, 71, 0.07), transparent 60%), linear-gradient(180deg, #0d1119, #0a0d13);
 }
 
 section > h5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
   text-align: center;
   color: var(--color-primary);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
-  margin-bottom: 0.6rem;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
   position: relative;
+}
+
+section > h5::before,
+section > h5::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-primary));
+}
+
+section > h5::after {
+  background: linear-gradient(90deg, var(--color-primary), transparent);
 }
 
 section > h2 {
   text-align: center;
   color: var(--color-white);
-  margin-bottom: 3.5rem;
+  margin-bottom: 1rem;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 section > h2::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  margin: 0.85rem auto 0;
-  border-radius: 2px;
-  animation: underlineShimmer 3s ease-in-out infinite;
+  display: none;
 }
 
 @keyframes underlineShimmer {
@@ -272,9 +288,9 @@ section > h2::after {
 .section-subtitle {
   text-align: center;
   color: var(--color-light);
-  font-size: 1.05rem;
-  max-width: 600px;
-  margin: -2.5rem auto 3rem;
+  font-size: 1rem;
+  max-width: 520px;
+  margin: 0 auto 4rem;
   line-height: 1.7;
 }
 

@@ -46,6 +46,7 @@ const Testimonial = () => {
             <ScrollReveal>
                 <h5>Client Proof & Reviews</h5>
                 <h2>What Founders & Executives Say</h2>
+                <p className="section-subtitle">Trusted by startups and enterprises — hear from the teams we've helped grow.</p>
             </ScrollReveal>
 
             <div className="review-marquee">
